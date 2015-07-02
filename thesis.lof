@@ -9,4 +9,6 @@
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Joining the file.}}{16}{figure.2.5}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Achieved improvement}}{27}{figure.4.1}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Achieved improvement - all measurements}}{27}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Achieved improvement - 10 MB chunks}}{27}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Achieved improvement - 40 MB chunks}}{28}{figure.4.3}
