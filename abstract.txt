@@ -1,0 +1,10 @@
+Despite today's computers' performance
+there still exist some tasks that are quite time demanding. Nature of some
+of these tasks allows to split them into smaller parts that can be processed in parallel.
+Distributing work among more computers in order to speed up the process is a common
+technique. However, most of the approaches use client-server architecture
+to achieve this goal. We provide purely peer-to-peer solution which
+allows high level of scalability, error recovery and easy maintaining.
+No special role is needed in our framework and each node can join the network in any time. Also
+the system is able to deal with node failures, keeping the overall computation time reasonable.
+Tests showed that significant improvement can be achieved in local area networks. 

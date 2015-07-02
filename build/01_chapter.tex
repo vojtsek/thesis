@@ -1,0 +1,336 @@
+\chapter{Analysis}\label{analysis}
+
+\section{Known approaches}\label{known-approaches}
+
+The idea of distributed computing was here since the 70's. Different
+approaches have been tried since then. Some of them are described in
+this section in order to show different concepts.
+
+\subsection{Client/server architecture}\label{clientserver-architecture}
+
+It's very common example of centralized system. In this pattern is one
+central node, known as the server and the rest of nodes, clients, are
+all connected to it. All the information and important computations
+happens at the server. The communication is typically initialized by the
+client, which sends a request, the server processes it and returns the
+desired result. Pros of this approach are relatively simple
+implementation and easy maintaining of the traffic. Also the data flow
+can be controlled easily. However the huge disadvantage is, that the
+server is by definition a single point of failure, i.e.~if the server
+goes down, the whole system becomes unusable. Also, thanks to the
+asymetric nature of the system, there usually has to be more parts of
+the software, one to run on the server and the other to run on the
+clients. The system is dependent on the server's performance too.
+
+\subsection{Peer to peer
+architectures}\label{peer-to-peer-architectures}
+
+\subsection*{Pure peer to peer network}
+
+Peer to peer paradigm is virtually the opposite of the previous model.
+Each node is completely equivalent to each other, can join the network
+at any time as well as leave it. This approach means great scalability
+and fault tolerance. On the other hand it requires more complex design
+and can encounter problems with security and management of the network.
+Our framework implements this model.
+
+\subsection*{Hybrid peer to peer network}
+
+This approach combines the previous two. There exists one node which is
+dedicated to serve as a control server. Each node contacts this server
+and all the control information are goes through it while the data are
+exchanged in the same manner as in the pure peer to peer networks. This
+helps to get rid of problems with management and provide information
+coherence while scalability is preserved. However there is reintroduced
+the issue with the single point of failure.
+
+\subsection*{Super peer architecture}
+
+Another try to improve the architecture considers the concept of the so
+called super peer. It is a computer, usually with slightly better
+performance than the other nodes, that plays the role of the control
+server, but only for some group of nodes. This forms some kind of
+autonomous groups (clusters) and has the same advantages as the hybrid
+network but the potential super peer failure is not so crucial. Also
+each super peer can have backup so the robustness of the network can be
+very good.
+
+\subsection{Summary}\label{summary}
+
+We have shown different implementations of the idea of distributing the
+work. Each have its own specifics and may be suitable for some
+application. We have chosen to implement our framework to behave like a
+pure peer to peer system as much as possible. Although the super peer
+architecture offers better control, we decided not to use it for several
+reasons. Mainly because our framework is supposed to be used in rather
+small networks where this paradigm could be quite exaggerated. Also we
+did not use the hybrid network because we definitely wants to avoid
+presence of the single point of failure.
+
+\section{Existing solutions}\label{existing-solutions}
+
+Since encoding of the video files is quite reasonable task, there was a
+few implementations of the similar issue. For example D. Hughes and J.
+Walkerdine from the Lancaster university published in their paper a
+solution which is using Lancaster's P2P Application Framework. They
+implemented a Java plug-in for this framework which uses Microsoft
+Windows Media Encoder SDK. Their approach was quite similar to ours and
+they achieved quite persuasive results. However their solution was
+usable in the specific environment only.
+
+\section{Framework description}\label{framework-description}
+
+\subsection{Basic overview}\label{basic-overview}
+
+The heart of the program is one executable file, that should be
+accompanied by the configuration file. This is discussed in detail in
+\hyperref[installation-and-use]{chapter 2}. Main options that should be
+set are IP address and a number of port on which the program should
+listen. It is also essential to provide credentials (i.e.~address and
+port) of some node which should be contacted by default. When more nodes
+are spawned, the network is formed and the computation may begin. Note
+that information about neighbors spread in a nondeterministic manner, it
+matters who is contacted by whom. So it's good to have one or more nodes
+which serve as super peers, i.e.~the rest contacts only these nodes.
+Once the network is established, the computation can begin. If one (or
+more) nodes have tasks to be done, it can start the process. The file is
+then processed and divided into chunks in the initiating node. These
+chunks are distributed among neighbors, processed and returned back.
+Once the initiator has all chunks back, it joins them together and the
+process ends.
+
+\subsection{Neighbor maintaining}\label{neighbor-maintaining}
+
+Each node maintains the list of its neighbors. The list is refreshed
+periodically, so the node keeps track of the current network state.
+Besides this main list exists another list, which contains potential
+neighbors. Generally each node that has communicated with the given one
+sometime in the past is added to the list of potential neighbors. The
+purpose of this list is to reduce amount of time spent with maintaining
+the neighbors list. That is, no more than required count of neighbors is
+maintained.
+
+Neighbors are uniquely identified by the pair of address and
+communicating port. This is sufficient for the potential neighbors,
+because before the neighbor is added to the main list, it has to be
+contacted. Additional info is then added so more complex structure is
+needed for storing neighbors. This structure contains information about
+neighbor's quality, last known state etc. The quality of the neighbor
+helps to prefer one neighbor to the other when picking the one to
+contact. It is updated after each chunk delivered from the given
+neighbor and reflects the neighbors computation power together with the
+speed of the connection.
+
+\subsection*{Initialization and discovery}
+
+The node is provided with the address and port of the neighbor which
+should be contacted by default, that is, when the neighbors list is
+empty. Each node has minimum count of neighbors which should be in its
+list. This number is checked periodically. In case that the list is too
+small, the list of potential neighbors is checked. If its empty, the
+node has to obtain more neighbors so it picks one neighbor from the
+list, contacts it and receives some suggestions. If the list is empty,
+the default node is contacted. Once the suggestions are received, the
+node adds the new addresses to the list of potential neighbors. When the
+list contains some potential neighbors, the node can contact them and
+add as regular neighbors.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.40]{./img/workflow_neighbors.pdf}
+\caption{Maintaining the neighbors}
+\end{center}
+\end{figure}
+
+\subsection*{Gathering neighbors}
+
+When the node has not enough neighbors, it can use another mechanism.
+This mechanism uses a flood technique to spread the request among the
+nodes in the network. The request is send to each neighbor, which
+spreads it further in the same manner. However the request is equipped
+with time to live value which is decreased after each hop so it does not
+spread forever neither too far. Once some node receives the request and
+is not busy, it contacts the initiator directly, so it can add him to
+the list of potential neighbors and then possibly as the regular
+neighbor.
+
+\subsection*{Withdrawing from the network}
+
+When the node wants to leave the network it has to abort the process, if
+it is initiator. Then a special message is sent to each neighbor, which
+informs them so they can react accordingly. That is, if the neighbor has
+tasks to process for the leaving one, it removes them from the queue and
+then removes the neighbor itself. Removed neighbors are completely lost,
+they are no longer stored in either of the lists. The process of saying
+goodbye to neighbors is asynchronous, the neighbors do respond with some
+acknowledgement message, but the leaving node does not wait for it,
+because it could cause potential deadlock in case that the other node is
+unable to respond for some reason.
+
+\subsection*{Neighbor's failure}
+
+There is no guarantee that all the neighbors leave the network properly.
+The program itself can encounter error or be terminated violently.
+Another possibility is some unpredictable error of physical character,
+for example power failure, network problem etc. In those cases it's
+essential for the other nodes in the network to be informed about this
+fact. Especially it's very important for the initiator who had some
+tasks processed by this node. In order to ensure handling of this
+possibility the neighbor list is checked periodically. If some neighbor
+does not respond, it is removed fro the list and all the data connected
+with it are treated accordingly. Namely the chunks assigned to it are
+resent.
+
+\subsection{Distribution of chunks}\label{distribution-of-chunks}
+
+Once the file is splitted, the chunks has to be distributed, processed
+and finally collected. To achieve this, we must deal with several
+issues, which are described further.
+
+\subsection*{Life cycle of the chunk}
+
+Firstly, we have to keep track of every chunk's state. That is, we have
+to know whether the chunk is waiting in the queue, has been sent to
+process or have returned already. For easy manipulation each chunk is
+represented by the dedicated structure, which holds information about it
+as well as information essential for transfer. This structure is further
+described in \hyperref[implementation]{chapter 3}. From now on we will
+use the term chunk for both the physical file and the reference. Typical
+chunk's life cycle looks like this: The chunk is created and pushed to
+the waiting queue. Later it's popped out and transfered to the
+processing node. There it is enqueued for processing, then processed and
+sent back. Meanwhile the initiator holds the reference in the list of
+tasks being processed. In case of failure of the processing node, the
+chunk is pushed to the waiting queue again. Also when the chunk waits
+for return, it's checked periodically and if the computation takes too
+long, it's resent too. Note that this can cause the situation, when one
+task is being processed by more than one neighbor. However it's not a
+problem at all, because if the chunk returns more than once, it simply
+is not accepted, because it is not needed anymore. Once the chunk
+returns successfully, the reference is moved to another list, where it
+waits for completion of the task. When all the chunks are collected, the
+joining process may begin and the task execution ends.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.40]{./img/workflow_chunks.pdf}
+\caption{Processing a chunk - initiator part}
+\end{center}
+\end{figure}
+
+\subsection*{Storing files}
+
+Tightly coupled with this process is the problem of storing the file.
+During the processing of each chunk four files has to be created.
+Firstly is created when the original file is splitted. This file can't
+be removed until the processed chunk returns, because it has to be
+available in case that the conversion fails for some reason. Another two
+files are created at the processing node, one for the input and one to
+store the output. The last file is created at the initiating node again
+to hold the processed chunk. This means, that the initiator has to has
+free disk space at least two times the size of the resulting file.
+
+\subsection*{Picking neighbors}
+
+Last but not least we have to choose policy to whom the chunks are
+distributed. We want to achieve as big speedup as possible, while
+preserve rather small list of neighbors. When the chunk is popped out
+from the queue, the initiator looks for suitable neighbor. That is the
+neighbor has free status in the corresponding structure. If no such
+neighbor is found, the chunk is re-queued and another try is postponed.
+Also the gathering process described in the previous section begins. If
+some neighbor is available, the chunk is assigned to it and the transfer
+may begin. This mechanism may seem odd, but if it was the other way
+around, it could possibly cause problems. If free neighbor was chosen
+first, the process could block afterwards, because of the lack of
+chunks. Till some chunk become available, the picked neighbor's state
+could change. So it is necessary to process the actions in this order.
+The initiator keeps track how many chunks were send to the particular
+neighbor and it does not send more than specified count to one neighbor
+because it could potentially lead to delay. The flag indicating whether
+the neighbor is free helps to control the flow. Each time chunk is
+assigned to the neighbor, the flag is set to false value to prevent
+sending more chunks in parallel. It's set to true again after the
+successful completion of the transfer. When the neighbor is too busy, it
+can express it in the communication, so the flag is set to false to
+prevent overloading of the neighbor. The flag is also refreshed during
+every periodic check.
+
+\subsection{Security issues}\label{security-issues}
+
+The present implementation is possibly vulnerable to some security
+threat. This is caused partly by the pure peer to peer nature, because
+it is difficult to control traffic and authorize all nodes in dynamic
+environments like this. It also was not our aim to solve this issue. The
+framework is supposed to be used mostly in LAN's where all the peers are
+trustworthy. Otherwise it could be compromised easily. For example when
+the encoded chunk arrives, it is not checked whether it has been sent to
+this node or not. So a malicious chunk could be infiltrated causing bad
+output or even failure of the joining process.
+
+\subsection{Networking handling}\label{networking-handling}
+
+The network communication is the most important part of the framework.
+Standard C library functions and structures were used which are
+conforming to POSIX.1-2001 standard. Although the program is intended to
+be used on the UNIX or UNIX-like operating systems, it should be
+portable to the Microsoft Windows systems as well thanks to the use of
+this standard. To preserve simplicity, all the network communication
+makes use of the TCP protocol. The system primarily uses the IPv6
+addresses, but it can be run in the mode which uses addresses of the
+IPv4 family only. Further and more detailed information can be found in
+\hyperref[implementation]{chapter 3}.
+
+\subsection{User interface}\label{user-interface}
+
+To provide interaction with the user, the curses API is used. This
+library makes it possible to control the terminal screen. That means,
+the application does not require any special GUI libraries and is able
+to run interactively even on machines without the X server. The control
+is rather simple, offering possibilities to load the file, start or
+abort the process, show information about neighbors and so on. The
+interaction require only a keyboard, no mouse is needed at all. Concrete
+information together with some examples can be found in
+\hyperref[installation-and-use]{chapter 2}. Detailed information about
+the implementation, namely the synchronization problems are discussed in
+\hyperref[implementation]{chapter 3}.
+
+\subsection{Problems, alternatives and possible
+improvements}\label{problems-alternatives-and-possible-improvements}
+
+Some alternative approaches were also considered during the designing.
+One of them was to don't use periodical checking at all. It was based on
+the idea, that there would exist permanent connection with each neighbor
+and the change of state would be indicated by the events related to this
+connection. However it was rejected due to the requirements connected
+with keeping the connection. Furthermore, the changes of ready state of
+the node would have to be check either periodically or the node would
+have to inform all its neighbors (even potential) about each change
+which would lead to another problems to deal with and is in contrast
+with passivity of the slaves anyway.
+
+Another issue was whether use some more sophisticated way of
+distributing the chunks. Namely some kind of hierarchy was considered
+when the chunk references would be distributed to neighbors in packs,
+where it would be further splitted and distributed among neighbor's
+neighbors and so on, so a kind of a tree structure would be formed. The
+transfer of the file would be processed directly between the initiator
+and the leaf node. However this approach turned out to be complicated
+and brings many problems. For example in case of failure of some node
+which is high in the hierarchy a lot of chunks would have to be
+re-distributed. Also the initiator's ability to control the distribution
+would be reduced. Moreover, the advantages of this approach are not so
+significant at all, because the biggest portion of time is spent during
+transfers and processing the chunks and the time spent with distribution
+of references is not important at all.
+
+Also the current implementation creates a separate connection for each
+data transfer. Alternatively, each chunk could be delivered and returned
+using the same connection which would lessen the demands of the
+communication. The connection's termination would also indicate problem
+with the chunk's processing or the neighbor itself. But the connection
+termination does not necessarily mean the failure of the process.
+Because it is desirable to avoid needless re-encoding of the chunks,
+this situation would has to be treated specially which would introduce
+additional problems. Also this approach does not fit very well to the
+current design which uses system of commands.
