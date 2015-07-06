@@ -4,15 +4,15 @@
 \def\ThesisTitle{Thesis title}
 
 % Author of the thesis
-\def\ThesisAuthor{Name Surname}
+\def\ThesisAuthor{Vojtech Hudecek}
 
 % Year when the thesis is submitted
-\def\YearSubmitted{1970}
+\def\YearSubmitted{2015}
 
 % Name of the department or institute, where the work was officially assigned
 % (according to the Organizational Structure of MFF UK in English,
 % or a full name of a department outside MFF)
-\def\Department{Name of the department}
+\def\Department{Department of Distributed and Depandable Systems}
 
 % Is it a department (katedra), or an institute (ústav)?
 \def\DeptType{Department}
@@ -21,11 +21,11 @@
 \def\Supervisor{Supervisor's Name}
 
 % Supervisor's department (again according to Organizational structure of MFF)
-\def\SupervisorsDepartment{department}
+\def\SupervisorsDepartment{Department of Distributed and Depandable Systems}
 
 % Study programme and specialization
-\def\StudyProgramme{study programme}
-\def\StudyBranch{study branch}
+\def\StudyProgramme{Computer Science}
+\def\StudyBranch{General Computer Science}
 
 % An optional dedication: you can thank whomever you wish (your supervisor,
 % consultant, a person who lent the software, etc.)
@@ -35,9 +35,19 @@ Dedication.
 
 % Abstract (recommended length around 80-200 words; this is not a copy of your thesis assignment!)
 \def\Abstract{%
+Despite today's computers' performance
+there still exist some tasks that are quite time demanding. Nature of some
+of these tasks allows to split them into smaller parts that can be processed in parallel.
+Distributing work among more computers in order to speed up the process is a common
+technique. However, most of the approaches use client-server architecture
+to achieve this goal. We provide purely peer-to-peer solution which
+allows high level of scalability, error recovery and easy maintaining.
+No special role is needed in our framework and each node can join the network in any time. Also
+the system is able to deal with node failures, keeping the overall computation time reasonable.
+Tests showed that significant improvement can be achieved in local area networks.
 }
 
 % 3 to 5 keywords (recommended), each enclosed in curly braces
 \def\Keywords{%
-{key} {words}
+{Parallelization} {Peer to Peer} {Distributed computing} {Video encoding}
 } 
