@@ -1,0 +1,11 @@
+footnotes:
+	Moore, vide formats, licenses, POSIX, curses, rapidjson, UNIX, Doxygen, STL, sockets, SIGPIPE, JSON, anycast, HTML
+revisit chapter 4: linear model, testing environment
+figures to text correspondence
+literature
+	architectures
+	lancaster's p2p
+
+
+cancellation command
+wait with some timeout when saying goodbye?
