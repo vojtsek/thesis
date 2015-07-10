@@ -1,8 +1,49 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{7}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[BOI()]{BOINC}
+BOINC client–server technology.
+\newblock Available~from:
+  $\texttt{<{https://en.wikipedia.org/wiki/BOINC\_client-server\_technology}>}$.
+\newblock Accessed: 2015-07-05.
+
+\bibitem[Bit()]{BitTor}
+BitTorrent.
+\newblock Available~from:
+  $\texttt{<{https://en.wikipedia.org/wiki/BitTorrent}>}$.
+\newblock Accessed: 2015-07-05.
+
+\bibitem[Gnu()]{Gnutella}
+Gnutella.
+\newblock Available~from:
+  $\texttt{<{https://en.wikipedia.org/wiki/Gnutella}>}$.
+\newblock Accessed: 2015-07-05.
+
+\bibitem[Had()]{Hadoop}
+Apache Hadoop.
+\newblock Available~from:
+  $\texttt{<{https://en.wikipedia.org/wiki/Apache\_Hadoop}>}$.
+\newblock Accessed: 2015-07-05.
+
+\bibitem[Map()]{MapRed}
+MapReduce.
+\newblock Available~from:
+  $\texttt{<{https://en.wikipedia.org/wiki/MapReduce}>}$.
+\newblock Accessed: 2015-07-05.
+
+\bibitem[{Fiorano Software}()]{SupPeer}
+{\sc {Fiorano Software}}.
+\newblock Super-peer architectures for distributed computing.
+\newblock Available~from:
+  $\texttt{<{http://www.fiorano.com/whitepapers/superpeer.pdf}>}$.
+
+\bibitem[James -- Walkerdine(2005)James, Walkerdine]{DVE}
+{\sc James}, D.~H. -- {\sc Walkerdine}, J.
+\newblock Distributed Video Encoding Over A Peer-To-Peer Network.
+\newblock In \emph{In the proceedings of PREP 2005}, 2005.
 
 \end{thebibliography}

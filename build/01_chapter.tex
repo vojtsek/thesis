@@ -14,16 +14,17 @@ all connected to it. All the information and important computations
 happens at the server. The communication is typically initialized by the
 client, which sends a request, the server processes it and returns the
 desired result. Pros of this approach are relatively simple
-implementation and easy maintaining of the traffic. Also the data flow
-can be controlled easily. However the huge disadvantage is, that the
-server is by definition a single point of failure, i.e.~if the server
-goes down, the whole system becomes unusable. Also, thanks to the
-asymetric nature of the system, there usually has to be more parts of
-the software, one to run on the server and the other to run on the
-clients. The system is dependent on the server's performance too.
+implementation and easy controlling of the traffic, because all the data
+passes through server. Also the data flow can be controlled easily.
+However the huge disadvantage is, that the server is by definition a
+single point of failure, i.e.~if the server goes down, the whole system
+becomes unusable. Also, thanks to the asymetric nature of the system,
+there usually has to be more parts of the software, one to run on the
+server and the other to run on the clients. The system is dependent on
+the server's performance too.
 
 \subsection{Peer to peer
-architectures}\label{peer-to-peer-architectures}
+architectures\citep{SupPeer}}\label{peer-to-peer-architecturessuppeer}
 
 \subsection*{Pure peer to peer network}
 
@@ -40,9 +41,9 @@ This approach combines the previous two. There exists one node which is
 dedicated to serve as a control server. Each node contacts this server
 and all the control information are goes through it while the data are
 exchanged in the same manner as in the pure peer to peer networks. This
-helps to get rid of problems with management and provide information
-coherence while scalability is preserved. However there is reintroduced
-the issue with the single point of failure.
+approach removes possible problems with the control of the data flow and
+provides information coherence while scalability is preserved. However
+the issue with the single point of failure is reintroduced here.
 
 \subsection*{Super peer architecture}
 
@@ -70,13 +71,99 @@ presence of the single point of failure.
 \section{Existing solutions}\label{existing-solutions}
 
 Since encoding of the video files is quite reasonable task, there was a
-few implementations of the similar issue. For example D. Hughes and J.
-Walkerdine from the Lancaster university published in their paper a
-solution which is using Lancaster's P2P Application Framework. They
-implemented a Java plug-in for this framework which uses Microsoft
-Windows Media Encoder SDK. Their approach was quite similar to ours and
-they achieved quite persuasive results. However their solution was
-usable in the specific environment only.
+few implementations of the similar issue. Some of them served for
+academic purposes only, but others found good use case in practice.
+
+\subsection{DVE (Distributed Video
+Encoding)}\label{dve-distributed-video-encoding}
+
+D. Hughes and J. Walkerdine from the Lancaster university published in
+their paper a solution which is using Lancaster's P2P Application
+Framework. They implemented a Java plug-in for this framework which uses
+Microsoft Windows Media Encoder SDK. Their approach was quite similar to
+ours and they achieved quite persuasive results. However their solution
+was usable in the specific environment only.\citep{DVE}
+
+\subsection{Apache Hadoop}\label{apache-hadoop}
+
+It is sophisticated distributed framework written for the Java platform.
+It serves for processing large amount of data and also as a storage. It
+provides very good ability to deal with hardware failures. The framework
+consists of the HDFS (Hadoop Distributed File System) and the processing
+part. The HDFS is a distributed file system which uses TCP/IP sockets
+for communication between nodes. It uses replication of data to achieve
+reliability. It is optimized to store large immutable files (range of
+gigabytes or even terabytes). The framework could use different file
+system, however, one of its main advantages is the knowledge about the
+data locality, hence unnecessary data transfers can be avoided. This
+feature may not be available when using some different file system. The
+processing part is based on the MapReduce engine, based on functional
+programming concept. It basically consists of three steps.
+
+\begin{enumerate}
+\item Map - A special function is applied to the local data on each worker node, data are associated with a key. This step can be processed in parallel.
+\item Shuffle - The data are redistributed, according to keys. Each worker node obtains data sets with the same key
+\item Reduce - The data are processed, in parallel.
+\end{enumerate}
+
+A special master node is needed which ensures effective task scheduling.
+Generally the framework is suitable for processing large data sets. It
+needs dedicated infrastructure and can achieve very good results. It can
+be used in many different applications including image processing,
+marketing analysis or data mining. It differs a lot from our solution -
+among its complexity and suitability for wide range of tasks, it needs
+some nodes with special functionality and also the network of
+specialized nodes. In contrast, our solution can operate in almost any
+computer network and the computing nodes can serve for other
+purposes.\citep{Hadoop} \citep{MapRed}
+
+\subsection{BOINC (Berkeley Open Infrastructure for Network
+Computing)}\label{boinc-berkeley-open-infrastructure-for-network-computing}
+
+It is a distributed system, developed on the Berkeley university, which
+utilizes computing power of personal computers around the world and
+interconnects them in the huge network. It supports multiple operating
+systems (the client part). Anyone can voluntarily join the network and
+scale it up by granting his computer's performance. After installing the
+client application, the system is able to exploit free CPU or GPU
+capacity of the computer. The server provides him with a portion of the
+given task. After the computation, the results are verified and
+uploaded. The system is used mainly for scientific computations. For
+example it is used by the well known project SETI@home. The framework is
+based on the client-server architecture. The server runs on UNIX OS,
+using common technologies such as the Apache web server and the MySQL
+database server. A PHP language is used.There are also CGI programs and
+daemons running on the server. The obvious difference is in use of the
+client-server model, nevertheless the philosophy of using regular
+computers as the computing nodes corresponds to ours.\citep{BOINC}
+
+\subsection{Gnutella}\label{gnutella}
+
+Gnutella is a peer to peer framework used for file sharing. The nodes
+use flood technique with limited number of hops for searching of the
+desired data. The positive acknowledgement is sent when this data was
+found, employing the UDP protocol. The file transfer can be negotiated
+then. The system is based on the super peer architecture, which makes it
+possible to reduce maximum number of hops. Though it is not used for
+distributed computation, the data transfers are used which makes it
+comparable with our system.\citep{Gnutella}
+
+\subsection{BitTorrent protocol}\label{bittorrent-protocol}
+
+Another interesting file sharing technique is introduced in the
+BitTorrent network. The files offered by the node are stored in special
+list and a single file download can (and usually do) use more nodes.
+This is possible, because the files are divided into pieces and when the
+node downloads some piece, it becomes source of this piece for the
+others. The pieces are marked so they can be downloaded in random order.
+The system provides good redundancy. Another advantage is, that as the
+file spreads in the network, the requirements on original distributor's
+bandwidth decreases. Eventually the node could not be needed at all.
+This protocol is used for file sharing by the BOINC framework, among
+many others. It certainly is an interesting alternative to handle the
+file transfers. In our framework, the use of this protocol would not be
+very convenient and useful, since once the chunk is processed, it
+becomes useless.\citep{BitTor}
 
 \section{Framework description}\label{framework-description}
 
@@ -84,31 +171,51 @@ usable in the specific environment only.
 
 The heart of the program is one executable file, that should be
 accompanied by the configuration file. This is discussed in detail in
-\hyperref[installation-and-use]{chapter 2}. Main options that should be
+\hyperref[installation-and-use]{appendix A}. Main options that should be
 set are IP address and a number of port on which the program should
 listen. It is also essential to provide credentials (i.e.~address and
 port) of some node which should be contacted by default. When more nodes
 are spawned, the network is formed and the computation may begin. Note
 that information about neighbors spread in a nondeterministic manner, it
 matters who is contacted by whom. So it's good to have one or more nodes
-which serve as super peers, i.e.~the rest contacts only these nodes.
-Once the network is established, the computation can begin. If one (or
-more) nodes have tasks to be done, it can start the process. The file is
-then processed and divided into chunks in the initiating node. These
-chunks are distributed among neighbors, processed and returned back.
-Once the initiator has all chunks back, it joins them together and the
-process ends.
+which are online most of the time and the rest contacts only these
+nodes. Otherwise the distribution of the neighborhood knowledge may be
+quite slow. Once the network is established, the computation can begin.
+If one (or more) nodes have tasks to be done, it can start the process.
+The file is then processed and divided into chunks in the initiating
+node. These chunks are distributed among neighbors, processed and
+returned back. Once the initiator has all chunks back, it joins them
+together and the process ends.
+
+C++ language has been chosen for the implementation. It allows us to use
+standard POSIX socket
+API\footnote{https://en.wikipedia.org/wiki/Berkeley\_sockets} which is
+widely used and has been proven by thousands of applications. Also it
+provides convenient functionality thanks to its Standard Template
+Library while allowing to use C library functions so it can cooperate
+well with the OS. Because it compiles to the native code, it does not
+need any interpreter, so its requirements are lower than other
+languages' such as Java and C\#. This fact is positive, because it
+means, that if the application runs in background and computes nothing,
+it does not spend many system resources. The program is supporting UNIX
+operating system.
 
 \subsection{Neighbor maintaining}\label{neighbor-maintaining}
 
-Each node maintains the list of its neighbors. The list is refreshed
-periodically, so the node keeps track of the current network state.
-Besides this main list exists another list, which contains potential
-neighbors. Generally each node that has communicated with the given one
-sometime in the past is added to the list of potential neighbors. The
-purpose of this list is to reduce amount of time spent with maintaining
-the neighbors list. That is, no more than required count of neighbors is
-maintained.
+The diagram which describes the process can be seen in the Figure 1.1.
+When the node wants to use other computer's computation capacity, it
+naturally has to contact them first. But the node has no prior explicit
+knowledge of the network's infrastructure, moreover, this infrastructure
+can change dynamically. To solve this, each node maintains the list of
+its neighbors. It contains addresses of the nodes which it successfully
+contacted. The list is refreshed periodically, so the node keeps track
+of the current network state. Besides this main list exists another
+list, which contains potential neighbors. Generally each node that has
+communicated with the given one sometime in the past is added to the
+list of potential neighbors. The purpose of this list is to reduce
+amount of time spent with maintaining the neighbors list. That is, no
+more than required count of neighbors is maintained, but if needed,
+suggestions can be found in this backup list.
 
 Neighbors are uniquely identified by the pair of address and
 communicating port. This is sufficient for the potential neighbors,
@@ -123,17 +230,19 @@ speed of the connection.
 
 \subsection*{Initialization and discovery}
 
-The node is provided with the address and port of the neighbor which
-should be contacted by default, that is, when the neighbors list is
-empty. Each node has minimum count of neighbors which should be in its
-list. This number is checked periodically. In case that the list is too
-small, the list of potential neighbors is checked. If its empty, the
-node has to obtain more neighbors so it picks one neighbor from the
-list, contacts it and receives some suggestions. If the list is empty,
-the default node is contacted. Once the suggestions are received, the
-node adds the new addresses to the list of potential neighbors. When the
-list contains some potential neighbors, the node can contact them and
-add as regular neighbors.
+This may be the most important part of the process. Its overview is
+given in Figure 1.1. The node is provided with the address and port of
+the neighbor which should be contacted by default, that is, when the
+neighbors list is empty. Each node has minimum count of neighbors which
+should be in its list. This number is checked periodically. In case that
+the count of confirmed neighbors is too small, the list of potential
+neighbors is checked. If its empty, the node has to obtain more
+neighbors so it picks one of its neighbors, contacts it and receives
+some suggestions. If it has no neighbors, the default node is contacted.
+Once the suggestions are received, the node adds the new addresses to
+the list of potential neighbors. When the list contains some potential
+neighbors, the node can contact them, confirm, and add as regular
+neighbors.
 
 \begin{figure}[h]
 \begin{center}
@@ -144,12 +253,13 @@ add as regular neighbors.
 
 \subsection*{Gathering neighbors}
 
-When the node has not enough neighbors, it can use another mechanism.
+When the initiating node has not enough neighbors and it needs more
+neighbors with free computation power, it can use another mechanism.
 This mechanism uses a flood technique to spread the request among the
 nodes in the network. The request is send to each neighbor, which
-spreads it further in the same manner. However the request is equipped
-with time to live value which is decreased after each hop so it does not
-spread forever neither too far. Once some node receives the request and
+spreads it further in the same manner. However, the request is equipped
+with time to live value which is decreased after each hop, so it does
+not spread forever nor too far. Once some node receives the request and
 is not busy, it contacts the initiator directly, so it can add him to
 the list of potential neighbors and then possibly as the regular
 neighbor.
@@ -165,7 +275,8 @@ they are no longer stored in either of the lists. The process of saying
 goodbye to neighbors is asynchronous, the neighbors do respond with some
 acknowledgement message, but the leaving node does not wait for it,
 because it could cause potential deadlock in case that the other node is
-unable to respond for some reason.
+unable to respond for some reason. It is not needed anyway, since there
+is no possibility for the remote node to stop the withdrawing process.
 
 \subsection*{Neighbor's failure}
 
@@ -189,27 +300,30 @@ issues, which are described further.
 
 \subsection*{Life cycle of the chunk}
 
-Firstly, we have to keep track of every chunk's state. That is, we have
-to know whether the chunk is waiting in the queue, has been sent to
-process or have returned already. For easy manipulation each chunk is
-represented by the dedicated structure, which holds information about it
-as well as information essential for transfer. This structure is further
-described in \hyperref[implementation]{chapter 3}. From now on we will
-use the term chunk for both the physical file and the reference. Typical
-chunk's life cycle looks like this: The chunk is created and pushed to
-the waiting queue. Later it's popped out and transfered to the
-processing node. There it is enqueued for processing, then processed and
-sent back. Meanwhile the initiator holds the reference in the list of
-tasks being processed. In case of failure of the processing node, the
-chunk is pushed to the waiting queue again. Also when the chunk waits
-for return, it's checked periodically and if the computation takes too
-long, it's resent too. Note that this can cause the situation, when one
-task is being processed by more than one neighbor. However it's not a
-problem at all, because if the chunk returns more than once, it simply
-is not accepted, because it is not needed anymore. Once the chunk
-returns successfully, the reference is moved to another list, where it
-waits for completion of the task. When all the chunks are collected, the
-joining process may begin and the task execution ends.
+Its description is displayed in the Figure 1.2. Firstly, we have to keep
+track of every chunk's state. That is, we have to know whether the chunk
+is waiting in the queue, has been sent to process or have returned
+already. For easy manipulation each chunk is represented by the
+dedicated structure, which holds information about it as well as
+information essential for transfer. This structure is further described
+in \hyperref[implementation]{chapter 2}. From now on we will use the
+term chunk for both the physical file and the reference. Typical chunk's
+life cycle looks like this: The chunk is created and pushed to the
+waiting queue. Later it's popped out and transfered to the processing
+node. There it is enqueued for processing, then processed and sent back.
+Meanwhile the initiator holds the reference in the list of tasks being
+processed. In case of failure of the processing node, the chunk is
+pushed to the waiting queue again. Also when the chunk waits for return,
+it's checked periodically and if the computation takes too long, it's
+resent too. This happens because the respective chunk's encoding could
+fail or there were some problems with it. There is a possibility, that
+it will be computed sooner by another neighbor. Note that this can cause
+the situation, when one task is being processed by more than one node.
+However it's not a problem at all, because if the chunk returns more
+than once, it simply is not accepted. Once the chunk returns
+successfully, the reference is moved to another list, where it waits for
+completion of the task. When all the chunks are collected, the joining
+process may begin and the task execution ends.
 
 \begin{figure}[h]
 \begin{center}
@@ -222,8 +336,8 @@ joining process may begin and the task execution ends.
 
 Tightly coupled with this process is the problem of storing the file.
 During the processing of each chunk four files has to be created.
-Firstly is created when the original file is splitted. This file can't
-be removed until the processed chunk returns, because it has to be
+Firstly is created when the original file is split. This file can't be
+removed until the processed chunk returns, because it has to be
 available in case that the conversion fails for some reason. Another two
 files are created at the processing node, one for the input and one to
 store the output. The last file is created at the initiating node again
@@ -240,21 +354,16 @@ neighbor has free status in the corresponding structure. If no such
 neighbor is found, the chunk is re-queued and another try is postponed.
 Also the gathering process described in the previous section begins. If
 some neighbor is available, the chunk is assigned to it and the transfer
-may begin. This mechanism may seem odd, but if it was the other way
-around, it could possibly cause problems. If free neighbor was chosen
-first, the process could block afterwards, because of the lack of
-chunks. Till some chunk become available, the picked neighbor's state
-could change. So it is necessary to process the actions in this order.
-The initiator keeps track how many chunks were send to the particular
-neighbor and it does not send more than specified count to one neighbor
-because it could potentially lead to delay. The flag indicating whether
-the neighbor is free helps to control the flow. Each time chunk is
-assigned to the neighbor, the flag is set to false value to prevent
-sending more chunks in parallel. It's set to true again after the
-successful completion of the transfer. When the neighbor is too busy, it
-can express it in the communication, so the flag is set to false to
-prevent overloading of the neighbor. The flag is also refreshed during
-every periodic check.
+may begin. The initiator keeps track how many chunks were send to the
+particular neighbor and it does not send more than specified count to
+one neighbor because it could potentially lead to delay. The flag
+indicating whether the neighbor is free helps to control the flow. Each
+time chunk is assigned to the neighbor, the flag is set to false value
+to prevent sending more chunks in parallel. It's set to true again after
+the successful completion of the transfer. When the neighbor is too
+busy, it can express it in the communication, so the flag is set to
+false to prevent overloading of the neighbor. The flag is also refreshed
+during every periodic check.
 
 \subsection{Security issues}\label{security-issues}
 
@@ -262,7 +371,7 @@ The present implementation is possibly vulnerable to some security
 threat. This is caused partly by the pure peer to peer nature, because
 it is difficult to control traffic and authorize all nodes in dynamic
 environments like this. It also was not our aim to solve this issue. The
-framework is supposed to be used mostly in LAN's where all the peers are
+framework is supposed to be used mostly in LANs where all the peers are
 trustworthy. Otherwise it could be compromised easily. For example when
 the encoded chunk arrives, it is not checked whether it has been sent to
 this node or not. So a malicious chunk could be infiltrated causing bad
@@ -272,65 +381,28 @@ output or even failure of the joining process.
 
 The network communication is the most important part of the framework.
 Standard C library functions and structures were used which are
-conforming to POSIX.1-2001 standard. Although the program is intended to
-be used on the UNIX or UNIX-like operating systems, it should be
-portable to the Microsoft Windows systems as well thanks to the use of
-this standard. To preserve simplicity, all the network communication
-makes use of the TCP protocol. The system primarily uses the IPv6
-addresses, but it can be run in the mode which uses addresses of the
-IPv4 family only. Further and more detailed information can be found in
-\hyperref[implementation]{chapter 3}.
+conforming to
+POSIX.1-2001\footnote{https://en.wikipedia.org/wiki/POSIX\#POSIX.1-2001}
+standard. Although the program is intended to be used on the
+UNIX\footnote{https://en.wikipedia.org/wiki/Unix} or UNIX-like operating
+systems, it should be portable to the Microsoft Windows systems as well
+thanks to the use of this standard. To preserve simplicity, all the
+network communication makes use of the TCP protocol. The system
+primarily uses the IPv6 addresses, but it can be run in the mode which
+uses addresses of the IPv4 family only. Additional and more detailed
+information can be found in \hyperref[implementation]{chapter 2}.
 
 \subsection{User interface}\label{user-interface}
 
-To provide interaction with the user, the curses API is used. This
-library makes it possible to control the terminal screen. That means,
-the application does not require any special GUI libraries and is able
-to run interactively even on machines without the X server. The control
-is rather simple, offering possibilities to load the file, start or
-abort the process, show information about neighbors and so on. The
-interaction require only a keyboard, no mouse is needed at all. Concrete
-information together with some examples can be found in
-\hyperref[installation-and-use]{chapter 2}. Detailed information about
+To provide interaction with the user, the
+curses\footnote{https://en.wikipedia.org/wiki/Curses\_(programming\_library)}
+library is used. This library makes it possible to control the terminal
+screen. That means, the application does not require any special GUI
+libraries and is able to run interactively even on machines without the
+X server. The control is rather simple, offering possibilities to load
+the file, start or abort the process, show information about neighbors
+and so on. The interaction require only a keyboard, no mouse is needed
+at all. Concrete information together with some examples can be found in
+\hyperref[installation-and-use]{appendix A}. Detailed information about
 the implementation, namely the synchronization problems are discussed in
-\hyperref[implementation]{chapter 3}.
-
-\subsection{Problems, alternatives and possible
-improvements}\label{problems-alternatives-and-possible-improvements}
-
-Some alternative approaches were also considered during the designing.
-One of them was to don't use periodical checking at all. It was based on
-the idea, that there would exist permanent connection with each neighbor
-and the change of state would be indicated by the events related to this
-connection. However it was rejected due to the requirements connected
-with keeping the connection. Furthermore, the changes of ready state of
-the node would have to be check either periodically or the node would
-have to inform all its neighbors (even potential) about each change
-which would lead to another problems to deal with and is in contrast
-with passivity of the slaves anyway.
-
-Another issue was whether use some more sophisticated way of
-distributing the chunks. Namely some kind of hierarchy was considered
-when the chunk references would be distributed to neighbors in packs,
-where it would be further splitted and distributed among neighbor's
-neighbors and so on, so a kind of a tree structure would be formed. The
-transfer of the file would be processed directly between the initiator
-and the leaf node. However this approach turned out to be complicated
-and brings many problems. For example in case of failure of some node
-which is high in the hierarchy a lot of chunks would have to be
-re-distributed. Also the initiator's ability to control the distribution
-would be reduced. Moreover, the advantages of this approach are not so
-significant at all, because the biggest portion of time is spent during
-transfers and processing the chunks and the time spent with distribution
-of references is not important at all.
-
-Also the current implementation creates a separate connection for each
-data transfer. Alternatively, each chunk could be delivered and returned
-using the same connection which would lessen the demands of the
-communication. The connection's termination would also indicate problem
-with the chunk's processing or the neighbor itself. But the connection
-termination does not necessarily mean the failure of the process.
-Because it is desirable to avoid needless re-encoding of the chunks,
-this situation would has to be treated specially which would introduce
-additional problems. Also this approach does not fit very well to the
-current design which uses system of commands.
+\hyperref[implementation]{chapter 2}.

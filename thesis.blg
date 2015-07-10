@@ -4,47 +4,74 @@ The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: preface.aux
 A level-1 auxiliary file: epilog.aux
 The style file: csplainnat.bst
-I found no \citation commands---while reading file thesis.aux
 Database file #1: literature.bib
-You've used 0 entries,
+Warning--to sort, need author or key in Hadoop
+Warning--to sort, need author or key in MapRed
+Warning--to sort, need author or key in BOINC
+Warning--to sort, need author or key in Gnutella
+Warning--to sort, need author or key in BitTor
+Warning--empty author in BOINC
+Warning--empty booktitle in BOINC
+Warning--empty year in BOINC
+Warning--empty year in BOINC
+Warning--empty author in BitTor
+Warning--empty booktitle in BitTor
+Warning--empty year in BitTor
+Warning--empty year in BitTor
+Warning--empty author in Gnutella
+Warning--empty booktitle in Gnutella
+Warning--empty year in Gnutella
+Warning--empty year in Gnutella
+Warning--empty author in Hadoop
+Warning--empty journal in Hadoop
+Warning--empty year in Hadoop
+Warning--empty year in Hadoop
+Warning--empty author in MapRed
+Warning--empty booktitle in MapRed
+Warning--empty year in MapRed
+Warning--empty year in MapRed
+Warning--empty booktitle in SupPeer
+Warning--empty year in SupPeer
+Warning--empty year in SupPeer
+You've used 7 entries,
             2898 wiz_defined-function locations,
-            623 strings with 5022 characters,
-and the built_in function-call counts, 33 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 10
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+            654 strings with 5656 characters,
+and the built_in function-call counts, 2172 in all, are:
+= -- 189
+> -- 33
+< -- 2
++ -- 16
+- -- 9
+* -- 168
+:= -- 256
+add.period$ -- 21
+call.type$ -- 7
+change.case$ -- 10
+chr.to.int$ -- 7
+cite$ -- 47
+duplicate$ -- 150
+empty$ -- 272
+format.name$ -- 16
+if$ -- 488
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 8
-num.names$ -- 0
-pop$ -- 0
+missing$ -- 7
+newline$ -- 43
+num.names$ -- 10
+pop$ -- 106
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 10
 quote$ -- 0
-skip$ -- 1
+skip$ -- 77
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 19
+swap$ -- 10
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
+type$ -- 77
+warning$ -- 28
+while$ -- 6
 width$ -- 0
-write$ -- 7
-(There was 1 error message)
+write$ -- 85
+(There were 28 warnings)

@@ -2,42 +2,46 @@
 \contentsline {chapter}{\numberline {1}Analysis}{6}{chapter.1}
 \contentsline {section}{\numberline {1.1}Known approaches}{6}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Client/server architecture}{6}{subsection.1.1.1}
-\contentsline {subsection}{\numberline {1.1.2}Peer to peer architectures}{6}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1.2}Peer to peer architectures\citep {SupPeer}}{6}{subsection.1.1.2}
 \contentsline {subsection}{\numberline {1.1.3}Summary}{7}{subsection.1.1.3}
 \contentsline {section}{\numberline {1.2}Existing solutions}{7}{section.1.2}
-\contentsline {section}{\numberline {1.3}Framework description}{7}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Basic overview}{7}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Neighbor maintaining}{7}{subsection.1.3.2}
-\contentsline {subsection}{\numberline {1.3.3}Distribution of chunks}{9}{subsection.1.3.3}
-\contentsline {subsection}{\numberline {1.3.4}Security issues}{11}{subsection.1.3.4}
-\contentsline {subsection}{\numberline {1.3.5}Networking handling}{11}{subsection.1.3.5}
-\contentsline {subsection}{\numberline {1.3.6}User interface}{12}{subsection.1.3.6}
-\contentsline {subsection}{\numberline {1.3.7}Problems, alternatives and possible improvements}{12}{subsection.1.3.7}
-\contentsline {chapter}{\numberline {2}Installation and use}{13}{chapter.2}
-\contentsline {section}{\numberline {2.1}Download}{13}{section.2.1}
-\contentsline {section}{\numberline {2.2}Requirements, installation and first run}{13}{section.2.2}
-\contentsline {section}{\numberline {2.3}Using the program}{14}{section.2.3}
-\contentsline {chapter}{\numberline {3}Implementation}{17}{chapter.3}
-\contentsline {section}{\numberline {3.1}Networking}{17}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Spawning connections}{17}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Protocol}{18}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Transferring the data}{18}{subsection.3.1.3}
-\contentsline {subsection}{\numberline {3.1.4}Handling errors}{19}{subsection.3.1.4}
-\contentsline {section}{\numberline {3.2}Structures' overview}{19}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}The TransferInfo structure}{19}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}The NeighborInfo structure}{20}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Important classes}{20}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}The NeighborStorage class}{20}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}The NetworkHandler class}{20}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}The Data class}{20}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Periodic actions}{21}{section.3.4}
-\contentsline {section}{\numberline {3.5}Queues}{21}{section.3.5}
-\contentsline {section}{\numberline {3.6}Working with input and output}{21}{section.3.6}
-\contentsline {section}{\numberline {3.7}Synchronization}{23}{section.3.7}
-\contentsline {section}{\numberline {3.8}Error detection and recovery}{23}{section.3.8}
-\contentsline {chapter}{\numberline {4}Experiments}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}Aproach to testing}{25}{section.4.1}
-\contentsline {chapter}{Conclusion}{29}{chapter*.27}
-\contentsline {chapter}{Bibliography}{30}{chapter*.27}
-\contentsline {chapter}{List of Abbreviations}{32}{chapter*.30}
-\contentsline {chapter}{Attachments}{33}{chapter*.31}
+\contentsline {subsection}{\numberline {1.2.1}DVE (Distributed Video Encoding)}{7}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Apache Hadoop}{7}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}BOINC (Berkeley Open Infrastructure for Network Computing)}{8}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Gnutella}{8}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}BitTorrent protocol}{8}{subsection.1.2.5}
+\contentsline {section}{\numberline {1.3}Framework description}{9}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Basic overview}{9}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Neighbor maintaining}{9}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Distribution of chunks}{12}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Security issues}{13}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {1.3.5}Networking handling}{14}{subsection.1.3.5}
+\contentsline {subsection}{\numberline {1.3.6}User interface}{14}{subsection.1.3.6}
+\contentsline {chapter}{\numberline {2}Implementation}{15}{chapter.2}
+\contentsline {section}{\numberline {2.1}Networking}{15}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Spawning connections}{15}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Protocol}{16}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Transferring the data}{16}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Handling errors}{17}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Structures' overview}{17}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}The TransferInfo structure}{18}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}The NeighborInfo structure}{18}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Important classes}{18}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}The NeighborStorage class}{18}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}The NetworkHandler class}{18}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}The Data class}{18}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Periodic actions}{19}{section.2.4}
+\contentsline {section}{\numberline {2.5}Queues}{19}{section.2.5}
+\contentsline {section}{\numberline {2.6}Working with input and output}{19}{section.2.6}
+\contentsline {section}{\numberline {2.7}Synchronization}{21}{section.2.7}
+\contentsline {section}{\numberline {2.8}Error detection and recovery}{21}{section.2.8}
+\contentsline {chapter}{\numberline {3}Experiments}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}Approach to testing}{23}{section.3.1}
+\contentsline {chapter}{\numberline {4}Problems, alternatives and possible improvements}{29}{chapter.4}
+\contentsline {chapter}{Conclusion}{31}{chapter*.28}
+\contentsline {section}{\numberline {4.1}Download}{32}{section.4.1}
+\contentsline {section}{\numberline {4.2}Requirements, installation and first run}{32}{section.4.2}
+\contentsline {section}{\numberline {4.3}Using the program}{33}{section.4.3}
+\contentsline {chapter}{Bibliography}{36}{chapter*.30}
+\contentsline {chapter}{List of Abbreviations}{39}{chapter*.33}
+\contentsline {chapter}{Attachments}{40}{chapter*.34}

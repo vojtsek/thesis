@@ -1,14 +1,18 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Maintaining the neighbors}}{9}{figure.1.1}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Processing a chunk - initiator part}}{10}{figure.1.2}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces initial-screen}}{14}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Loading the file.}}{15}{figure.2.2}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Overview of the process.}}{15}{figure.2.3}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Processing of the tasks.}}{16}{figure.2.4}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Joining the file.}}{16}{figure.2.5}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Maintaining the neighbors}}{11}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Processing a chunk - initiator part}}{13}{figure.1.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Achieved improvement - all measurements}}{27}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Achieved improvement - 10 MB chunks}}{27}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Achieved improvement - 40 MB chunks}}{28}{figure.4.3}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Summary of the model}}{25}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Graphical representation of the model data}}{26}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Achieved improvement - all measurements}}{26}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Achieved improvement - 10 MB chunks}}{27}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Achieved improvement - 40 MB chunks}}{27}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Comparison of operations}}{28}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Comparison of operations}}{28}{figure.3.7}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces initial-screen}}{33}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Loading the file.}}{34}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Overview of the process.}}{34}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Processing of the tasks.}}{35}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Joining the file.}}{35}{figure.4.5}
