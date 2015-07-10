@@ -4,6 +4,8 @@ The purpose of the application is to speed up the computation process, thus it s
 ## Approach to testing
 If we want to obtain reasonable data, the measurements must be repeated several times to prevent deviations. Also we want to keep the measurements independent so its statistical processing is easier. Our approach to running the tests and gathering results is described in this chapter. Our main goal is to measure the improvement, but we would also like to measure the impact the particular setting has on the result.
 
+The tests were run in the school laboratory. The network consists of several computers connected together with common ethernet twisted pair cables. Each computer has currently installed 64 bit Gentoo  Linux\footnote{https://www.gentoo.org/} with the Linux kernel version 3.18. The machines are equipped with Intel Core i7 processors and 6 GB of operation memory. The MTU is set to 1500B and the network uses Gigabit Ethernet.
+
 Because of the number of tests, it is desirable that the testing process is automated. Because of that, special Bash script was used to run the tests. The script is tailored to be used at the testing laboratory, so it may need little modifications to work in some different environment. It is distributed with the source code of the framework. To allow automated and robust execution of the test, special functionality was added to the program. It is invokable by option given at the start time and causes the program to run in non-interactive mode, i.e. keyboard input is accepted, the program just processes given file and ends. This options assumes all the essential data are given when the program is started. To keep the measurements independent, all the instances (on every node) of the program are started at the test beginning and they are killed in the end. Communication with the remote nodes is handled by the ssh program. The testing script uses a special file which describes the particular run. Working example of such file together with explanations of the values is given below.
 \begin{samepage}
 \begin{verbatim}
@@ -32,7 +34,7 @@ The desired values have been gathered in two ways. Some of them, for example ave
 ### Linear Model
 Measurings showed, that the dependence between the number of involved nodes and the improvement is approximately logarithmic. Work with the data and the model was performed in the R Studio program. To evaluate the data, simple linear regression model was used. Specifically, subsequent formula was used:
 \begin{center}
-$\frac{distributed\_time}{single\_node\_time} = x_1 \times log(neighbor_count - 0.9)$
+$\frac{distributed\_time}{single\_node\_time} = \beta_0 + \beta_1 \times log(neighbor\_count - 0.9)$
 \end{center}
 The absolute value has been added since the model fits better this way - in the case when one neighbor is used, the distributed computation is actually slower. The analysis of the model showed, that it makes sense to use this model. The assumptions such as homoscedasticity (constant variance) and independence of errors were verified using plots and results given by the R Studio\footnote{https://www.rstudio.com/}.
 Some of the mentioned outputs are given in the figures 3.1 and 3.2. We can see, that according to the p-values corresponding to coefficients, both of them are significant for the model. Residual standard error shows, that the variance is not too big. In the plots we can see that residuals has approximately constant variance. However, the second plot suggests, that they may not be distributed normally.
@@ -69,7 +71,7 @@ Some of the mentioned outputs are given in the figures 3.1 and 3.2. We can see, 
 \end{center}
 \end{figure}
 
-In the figure 3.6, 3.7 and 3.8 are displayed ratios between particular chunk operations. The first two shows average values per one chunk (so the join and split times are just for an illustration), the latter shows the summations.
+In the figures 3.6, 3.7 and 3.8 are displayed ratios between particular chunk operations. The first two shows average values per one chunk (so the join and split times are just for an illustration), sorted in ascending order by the chunk size, the latter shows the summations. We can see that portion of time spent with network transfers is relatively small in our case.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.90]{./img/chunks1.png}
@@ -78,7 +80,7 @@ In the figure 3.6, 3.7 and 3.8 are displayed ratios between particular chunk ope
 \end{figure}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.90]{./img/chunks1.2.png}
+\includegraphics[scale=0.90]{./img/chunks1_2.png}
 \caption{Comparison of operations}
 \end{center}
 \end{figure}

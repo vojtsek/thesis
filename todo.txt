@@ -1,11 +1,7 @@
 clickable footnotes, literature nicer
-conclusion
 testing conditions
 	ethernet
 	machines
 	MTU ...
-
-commands
-
 
 max neighbors
