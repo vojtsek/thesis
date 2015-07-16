@@ -1,7 +1,3 @@
 clickable footnotes, literature nicer
-testing conditions
-	ethernet
-	machines
-	MTU ...
 
 max neighbors

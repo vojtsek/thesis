@@ -6,7 +6,7 @@ If we want to obtain reasonable data, the measurements must be repeated several 
 
 The tests were run in the school laboratory. The network consists of several computers connected together with common ethernet twisted pair cables. Each computer has currently installed 64 bit Gentoo  Linux\footnote{https://www.gentoo.org/} with the Linux kernel version 3.18. The machines are equipped with Intel Core i7 processors and 6 GB of operation memory. The MTU is set to 1500B and the network uses Gigabit Ethernet.
 
-Because of the number of tests, it is desirable that the testing process is automated. Because of that, special Bash script was used to run the tests. The script is tailored to be used at the testing laboratory, so it may need little modifications to work in some different environment. It is distributed with the source code of the framework. To allow automated and robust execution of the test, special functionality was added to the program. It is invokable by option given at the start time and causes the program to run in non-interactive mode, i.e. keyboard input is accepted, the program just processes given file and ends. This options assumes all the essential data are given when the program is started. To keep the measurements independent, all the instances (on every node) of the program are started at the test beginning and they are killed in the end. Communication with the remote nodes is handled by the ssh program. The testing script uses a special file which describes the particular run. Working example of such file together with explanations of the values is given below.
+Because of the number of tests, it is desirable that the testing process is automated. Because of that, special Bash script was used to run the tests. The script is tailored to be used at the testing laboratory, so it may need little modifications to work in some different environment. It is distributed with the source code of the framework. To allow automated and robust execution of the test, special functionality was added to the program. It is invokable by option given at the start time and causes the program to run in non-interactive mode, i.e. keyboard input is not accepted, the program just processes given file and ends. This options assumes all the essential data are given when the program is started. To keep the measurements independent, all the instances (on every node) of the program are started at the test beginning and they are killed in the end. Communication with the remote nodes is handled by the ssh program. The testing script uses a special file which describes the particular run. Working example of such file together with explanations of the values is given below.
 \begin{samepage}
 \begin{verbatim}
 v6 // use IPv6
@@ -28,8 +28,11 @@ spawn u-pl9 2229
 spawn u-pl10 2230
 \end{verbatim}
 \end{samepage}
-Thanks to this mechanism, various scenarios can be run easily without the need of human interaction. The test data were collected by running the test ten times for the given count of nodes. The count varied from one to ten nodes involved. Each test was run once with chunks of 40 000 kB in size and once with 10 000 kB chunks. The same file was used each time as well as the encoding quality. Each test stored various results, among others the average times needed for transfer and encoding, number of chunks, quality and count of involved nodes. Because we had not the chance to run the tests in some dedicated network, the computation times may vary for the given setting depending on the current conditions. The tests showed however, that if we multiply the average time needed to encode one chunk by the count of chunks, the product corresponds to the time that would be taken by the normal encoding process. This allows us to deal with the problem, because we can compare the time with this computed estimation and the error will be minimal.
+Thanks to this mechanism, various scenarios can be run easily without the need of human interaction.
+
+The test data were collected by running the test ten times for the given count of nodes. The count varied from one to ten nodes involved. Each test was run once with chunks of 40 000 kB in size and once with 10 000 kB chunks. The same file was used each time as well as the encoding quality. Each test gathered various results, among others the average times needed for transfer and encoding, number of chunks, quality and count of involved nodes. Because we had not the chance to run the tests in some dedicated network, the computation times may vary for the given setting depending on the current conditions. The tests showed however, that if we multiply the average time needed to encode one chunk by the count of chunks, the product corresponds to the time that would be taken by the normal encoding process. This allows us to deal with the problem, because we can compare the time with this computed estimation and the error will be minimal.
 The desired values have been gathered in two ways. Some of them, for example average transfer and encoding times, are measured directly in the program and then outputted in special file. The script just reads it from this file. The rest of the values is obtained in the script.
+
 ## Results
 ### Linear Model
 Measurings showed, that the dependence between the number of involved nodes and the improvement is approximately logarithmic. Work with the data and the model was performed in the R Studio program. To evaluate the data, simple linear regression model was used. Specifically, subsequent formula was used:
@@ -71,7 +74,7 @@ Some of the mentioned outputs are given in the figures 3.1 and 3.2. We can see, 
 \end{center}
 \end{figure}
 
-In the figures 3.6, 3.7 and 3.8 are displayed ratios between particular chunk operations. The first two shows average values per one chunk (so the join and split times are just for an illustration), sorted in ascending order by the chunk size, the latter shows the summations. We can see that portion of time spent with network transfers is relatively small in our case.
+In the figures 3.6, 3.7 and 3.8 are displayed ratios between particular chunk operations. The first two shows average values per one chunk (so the join and split times are just for an illustration), sorted in ascending order by the chunk size, the latter shows the summations. We can see that portion of time spent with network transfers is relatively small in our case. These diagrams were generated using the LibreOffice package\footnote{http://www.libreoffice.org/}
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.90]{./img/chunks1.png}
@@ -87,6 +90,13 @@ In the figures 3.6, 3.7 and 3.8 are displayed ratios between particular chunk op
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.90]{./img/chunks2.png}
-\caption{Comparison of operations}
+\caption{Comparison of operations - times summed}
+\end{center}
+\end{figure}
+Figure 3.9. shows results of the experiment, in which one of the nodes was killed during the process and then spawned again. As a result, several chunks were send more times, depending on the conditions in the network. The plot shows average number of chunk send and achieved improvement. We can see, that resending of chunks has great impact on the result. It introduces a thought, that sending each chunk two times preventively could be desirable in the environments with high probability of faults. Also, this problem could be reduced by using smaller chunks.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.90]{./img/failures.pdf}
+\caption{Impact of resending to the result}
 \end{center}
 \end{figure}

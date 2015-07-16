@@ -14,26 +14,25 @@ all connected to it. All the information and important computations
 happens at the server. The communication is typically initialized by the
 client, which sends a request, the server processes it and returns the
 desired result. Pros of this approach are relatively simple
-implementation and easy controlling of the traffic, because all the data
+implementation and easy control of the traffic, because all the data
 passes through server. Also the data flow can be controlled easily.
 However the huge disadvantage is, that the server is by definition a
-single point of failure, i.e.~if the server goes down, the whole system
-becomes unusable. Also, thanks to the asymmetric nature of the system,
-there usually has to be more parts of the software, one to run on the
-server and the other to run on the clients. The system is dependent on
-the server's performance too.
+single point of failure, i.e.~if it goes down, the whole system becomes
+unusable. Also, thanks to the asymmetric nature of the system, there
+usually has to be more parts of the software, one to run on the server
+and the other to run on the clients. The system is dependent on the
+server's performance too.
 
 \subsection{Peer to peer
-architectures\citep{SupPeer}}\label{peer-to-peer-architecturessuppeer}
+architectures}\label{peer-to-peer-architectures}
 
-\subsection*{Pure peer to peer network}
-
-Peer to peer paradigm is virtually the opposite of the previous model.
-Each node is completely equivalent to each other, can join the network
-at any time as well as leave it. This approach means great scalability
-and fault tolerance. On the other hand it requires more complex design
-and can encounter problems with security and management of the network.
-Our framework implements this model.
+\citep{SupPeer} \subsection*{Pure peer to peer network} Peer to peer
+paradigm is virtually the opposite of the previous model. Each node is
+completely equivalent to each other, can join the network at any time as
+well as leave it. This approach means great scalability and fault
+tolerance. On the other hand, it requires more complex design and can
+encounter problems with security and management of the network. Our
+framework implements this model.
 
 \subsection*{Hybrid peer to peer network}
 
