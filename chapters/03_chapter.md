@@ -68,13 +68,13 @@ where coefficient \textit{q} represents the influence of the time consumed by th
 In the figures 3.5 and 3.6 are displayed ratios between particular chunk operations. The ratios are displayed with respect to the time, the serial execution would take. Each column represents one measuring. The first image displays data for chunks with 10 MB in size, the second shows 40 MB chunks. We can see that portion of time spent with network transfers is relatively small in our case. These charts were generated using the LibreOffice package\footnote{http://www.libreoffice.org/}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.55]{./img/comparison_chart.png}
+\includegraphics[scale=0.5]{./img/comparison_chart.png}
 \caption{Comparison of operation times - 10 MB chunks}
 \end{center}
 \end{figure}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.55]{./img/comparison_chart2.png}
+\includegraphics[scale=0.5]{./img/comparison_chart2.png}
 \caption{Comparison of operation times - 40 MB chunks}
 \end{center}
 \end{figure}
@@ -101,7 +101,7 @@ Some of the mentioned outputs are given in the figures 3.9 and 3.10. We can see,
 \end{figure}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.60]{./img/model_plots.png}
+\includegraphics[scale=0.45]{./img/model_plots.png}
 \caption{Graphical representation of the model data}
 \end{center}
 \end{figure}
@@ -111,7 +111,7 @@ Overall time of the process can be divided into operations split, send, encode, 
 
 To applicate the Amdahl's law, we must determine the fraction of the algorithm that is strictly serial. This involves the splitting and joining. We consider the data transfers to be parallelized with the preceding paragraph in mind. According to the results, the split and join operations take approximately 7.5\% of time in average. So according to the basic form of the law, the theoretical maximum speedup should be obtained from the following formula:\\\\
 \begin{center}
-$S=\lim_{n \to +\infty} \frac{1}{B + \frac{1}{n}(1 - B)} = \frac{1}{B} = \frac{1}{0.075} = 13.33$ \\\\
+$S=\lim_{n \to +\infty} \frac{1}{B + \frac{1}{n}(1 - B)} = \frac{1}{B} = \frac{1}{0.075} = 13.33$
 \end{center}
 Where $B$ represents the serial fraction. This result is strictly theoretical and does not correspond to real situation, mainly because of the problems mentioned above. We can obtain more realistic results by using the formula to estimate the parallel fraction of time.
 \begin{center}
