@@ -39,7 +39,7 @@ The desired values have been gathered in two ways. Some of them, for example ave
  In the Figure 3.1 are showed the achieved results, interpreted with respect to time needed by the single node. The x-axis shows count of nodes, the y-axis the portion of time needed by the distributed process. The blue dashed line represents the estimate which is based on the model which used hyperbolic function to predict the data. The obtained data are visualized as black crosses, red squares show respective mean values.
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.60]{./img/improvement_root.png}
+\includegraphics[scale=0.45]{./img/improvement_root.png}
 \caption{Achieved improvement - all measurements}
 \end{center}
 \end{figure}
@@ -48,19 +48,19 @@ $y = q*x$\\\\
 where coefficient \textit{q} represents the influence of the time consumed by the data transfers. The Figure 3.4 shows, that for this chunk size the time spent with the distribution causes latencies when more nodes are employed. Each node waits for the chunk for too long since too many transfers are processed in parallel.
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.60]{./img/Rplot_all.png}
+\includegraphics[scale=0.45]{./img/Rplot_all.png}
 \caption{Achieved speedup - all measurements}
 \end{center}
 \end{figure}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.60]{./img/Rplot10k.png}
+\includegraphics[scale=0.45]{./img/Rplot10k.png}
 \caption{Achieved speedup - 10 MB chunks}
 \end{center}
 \end{figure}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.60]{./img/Rplot40k.png}
+\includegraphics[scale=0.45]{./img/Rplot40k.png}
 \caption{Achieved speedup - 40 MB chunks}
 \end{center}
 \end{figure}
@@ -68,20 +68,20 @@ where coefficient \textit{q} represents the influence of the time consumed by th
 In the figures 3.5 and 3.6 are displayed ratios between particular chunk operations. The ratios are displayed with respect to the time, the serial execution would take. Each column represents one measuring. The first image displays data for chunks with 10 MB in size, the second shows 40 MB chunks. We can see that portion of time spent with network transfers is relatively small in our case. These charts were generated using the LibreOffice package\footnote{http://www.libreoffice.org/}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.90]{./img/comparison_chart.png}
+\includegraphics[scale=0.55]{./img/comparison_chart.png}
 \caption{Comparison of operation times - 10 MB chunks}
 \end{center}
 \end{figure}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.90]{./img/comparison_chart2.png}
+\includegraphics[scale=0.55]{./img/comparison_chart2.png}
 \caption{Comparison of operation times - 40 MB chunks}
 \end{center}
 \end{figure}
 Figure 3.8 shows results of the experiment, in which one of the nodes was killed during the process and then spawned again. As a result, several chunks were sent more times, depending on the conditions in the network. The plot shows average number of chunk sent and achieved improvement. In this experiment, 40 MB chunks were used, displayed in the left side. Also, some of the experiments were intentionally run with no failure, so we can see in the left down corner results achieved with normal run so we can compare it. Those values are highlighted. We can see, that resending of chunks has great impact on the result. This problem could be reduced by using smaller chunks. When we used 5 MB chunks, the results improved significantly as showed in the right side of the Figure.
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.60]{./img/failures_both.png}
+\includegraphics[scale=0.30]{./img/failures_both.png}
 \caption{Impact of resending on the result}
 \end{center}
 \end{figure}
