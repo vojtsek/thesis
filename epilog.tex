@@ -2,17 +2,17 @@
 \addcontentsline{toc}{chapter}{Conclusion}
 Based on the experiments it can be said, that the framework works fine and it can be successfully used to speed up computation in the local network. Although the achieved speed up does not grow linearly with the increasing number of nodes, it can be quite significant. It was not tested in WAN environments, however, according to the results, the transfers of the data takes indispensable portion of the whole processing time, so the improvement depends on the network throughput. 
 
-As is being discussed in \hyperref[Problems-alternatives-and-possible-improvements]{chapter 4}, the framework could be further improved. To achieve more effective distribution of the work, more sophisticated scheduling could be employed that would take into account network topology or each node's performance and possibly create chunks of different sizes etc. It would require some better network knowledge. Also it was shown, that some redundancy for prevention of re-computing all chunks from one particular node could be useful. However, this would cause worse performance and also the advantages are quite unsure. Because of the speed of the network the data transfers generally seems to be a bottleneck, so good scheduling algorithm appears to be very important, together with optimal choice of the chunk size. This leads us to a conclusion, that in reliable network environments is probably better idea to centralize logic to special node in order to achieve better performance and accept potential malfunctions caused by the control node failure. This control node would schedule the process for each client that would ask. Another advantage of this approach is the fact, that this node could use a knowledge of the current network state, that is, which nodes are employed and how,
+As is being discussed in \hyperref[Problems-alternatives-and-possible-improvements]{chapter 4}, the framework could be further improved. To achieve more effective distribution of the work, more sophisticated scheduling could be employed that would take into account network topology or each node's performance and possibly create chunks of different sizes etc. It would require some better network knowledge. Also it was showed, that some redundancy for prevention of re-computing all chunks from one particular node could be useful. However, this would cause worse performance and also the advantages are quite unsure. Because of the speed of the network the data transfers generally seems to be a bottleneck, so good scheduling algorithm appears to be very important, together with optimal choice of the chunk size. This leads us to a conclusion, that in reliable network environments is probably better idea to centralize logic to special node in order to achieve better performance and accept potential malfunctions caused by the control node failure. This control node would schedule the process for each client that would ask. Another advantage of this approach is the fact, that this node could use a knowledge of the current network state, that is, which nodes are employed and how,
 
-\chapter*{Appendix A - Installation and use}
-\section{Download} 
+\section{Appendix A - Installation and use}
+\subsection{Download} 
 First it's essential to get the source code. You can clone the code directly from the git repository using command
 \begin{verbatim}
 # git clone https://github.com/vojtsek/VideoCompression.git
 \end{verbatim}
 Alternatively you can download the zip file and unpack it in some directory.
 
-\section{Requirements, installation and first run}
+\subsection{Requirements, installation and first run}
 To run the program successfully it's essential to have \textit{ffmpeg} and \textit{ffprobe} installed on your computer. Although technically it doesn't matter which codec is used, the program currently uses only H.264 standard for encoding of the output, so it assumes the \textit{ffmpeg} has been compiled with the \textit{x264} codec. Otherwise the program does not have any special requirements except standard libraries which should be available on all UNIX systems, so once you installed these programs, you can change to the directory containing the source code and run the installation script:
 \begin{verbatim}
 # cd DVC
@@ -44,7 +44,7 @@ Then you can finally run the program. Some of the settings can be changed by pro
 If the string "\textit{IPv4}" appears among parameters, the program will use only the IPv4 addresses\footnote{https://en.wikipedia.org/wiki/IPv4},
 in which case should be the \textit{CONF} file changed appropriately.
 
-\section{Using the program}
+\subsection{Using the program}
 When you run the program, the initial screen appears. You can choose desired action then using function keys. You can see the initial screen in the figure 4.1. Available options are highlighted.
 \begin{figure}[h]
 \begin{center}
@@ -103,4 +103,4 @@ The program then starts splitting the file and distributing the chunks while inf
 \end{center}
 \end{figure}
 
-To obtain more information about what is going on, the \textit{-d} option may be used which allows to specify level of debug messages that will be shown.
+To obtain more information about what is going on, the \textit{-d} option may be used which allows to specify level of debug messages that will be showed.

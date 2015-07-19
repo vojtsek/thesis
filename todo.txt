@@ -1,4 +1,2 @@
-clickable footnotes, literature nicer
-
 max neighbors
 map of encoded chunks
