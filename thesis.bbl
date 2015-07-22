@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -40,6 +40,11 @@ MapReduce.
 \newblock Super-peer architectures for distributed computing.
 \newblock Available~from:
   $\texttt{<{http://www.fiorano.com/whitepapers/superpeer.pdf}>}$.
+
+\bibitem[Gujarati -- Porter(2009)Gujarati, Porter]{ECON}
+{\sc Gujarati}, D.~N. -- {\sc Porter}, D.~C.
+\newblock In \emph{Basic Econometrics (Fifth ed.)}, 2009.
+\newblock ISBN ISBN 9780073375779.
 
 \bibitem[James -- Walkerdine(2005)James, Walkerdine]{DVE}
 {\sc James}, D.~H. -- {\sc Walkerdine}, J.

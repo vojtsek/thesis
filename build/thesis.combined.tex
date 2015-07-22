@@ -62,20 +62,20 @@
 
 \section{Known approaches}\label{known-approaches}
 
-The idea of distributed computing was here since the 70's. Different
-approaches have been tried since then. Some of them are described in
-this section in order to show different concepts.
+The idea of distributed computing has been here since the 70's.
+Different approaches have been tried since then. Some of them are
+described in this section in order to show different concepts.
 
 \subsection{Client/server architecture}\label{clientserver-architecture}
 
 It's very common example of centralized system. In this pattern is one
 central node, known as the server and the rest of nodes, clients, are
-all connected to it. All the information and important computations
-happens at the server. The communication is typically initialized by the
-client, which sends a request, the server processes it and returns the
-desired result. Pros of this approach are relatively simple
-implementation and easy control of the traffic, because all the data
-passes through server. Also the data flow can be controlled easily.
+all connected to it. All the information is stored and important
+computations happen at the server. The communication is typically
+initialized by the client, which sends a request, the server processes
+it and returns the desired result. Pros of this approach are relatively
+simple implementation and easy control of the traffic, because all the
+data passes through server. Also the data flow can be controlled easily.
 However the huge disadvantage is, that the server is by definition a
 single point of failure, i.e.~if it goes down, the whole system becomes
 unusable. Also, thanks to the asymmetric nature of the system, there
@@ -117,8 +117,8 @@ very good.
 
 \subsection{Summary}\label{summary}
 
-We have shown different implementations of the idea of distributing the
-work. Each have its own specifics and may be suitable for some
+We showed different implementations of the idea of distributing the
+work. Each has its own specifics and may be suitable for some
 application. We have chosen to implement our framework to behave like a
 pure peer to peer system as much as possible. Although the super peer
 architecture offers better control, we decided not to use it for several
@@ -216,13 +216,13 @@ This is possible, because the files are divided into pieces and when the
 node downloads some piece, it becomes source of this piece for the
 others. The pieces are marked so they can be downloaded in random order.
 The system provides good redundancy. Another advantage is, that as the
-file spreads in the network, the requirements on original distributor's
-bandwidth decreases. Eventually the node could not be needed at all.
-This protocol is used for file sharing by the BOINC framework, among
-many others. It certainly is an interesting alternative to handle the
-file transfers. In our framework, the use of this protocol would not be
-very convenient and useful, since once the chunk is processed, it
-becomes useless.\citep{BitTor}
+file spreads through the network, the requirements on original
+distributor's bandwidth decrease. Eventually the node could not be
+needed at all. This protocol is used for file sharing by the BOINC
+framework, among many others. It certainly is an interesting alternative
+to handle the file transfers. In our framework, the use of this protocol
+would not be very convenient and useful, since once the chunk is
+processed, it becomes useless.\citep{BitTor}
 
 \section{Framework description}\label{framework-description}
 
@@ -231,19 +231,19 @@ becomes useless.\citep{BitTor}
 The heart of the program is one executable file, that should be
 accompanied by the configuration file. This is discussed in detail in
 \hyperref[installation-and-use]{appendix A}. Main options that should be
-set are IP address and a number of port on which the program should
-listen. It is also essential to provide credentials (i.e.~address and
-port) of some node which should be contacted by default. When more nodes
-are spawned, the network is formed and the computation may begin. Note
-that information about neighbors spread in a nondeterministic manner, it
-matters who is contacted by whom. So it's good to have one or more nodes
-which are online most of the time and the rest contacts only these
-nodes. Otherwise the distribution of the neighborhood knowledge may be
-quite slow. Once the network is established, the computation can begin.
-If one (or more) nodes have tasks to be done, it can start the process.
-The file is then processed and divided into chunks in the initiating
-node. These chunks are distributed among neighbors, processed and
-returned back. Once the initiator has all chunks back, it joins them
+set are IP address and a number of port which the program should listen
+on. It is also essential to provide credentials (i.e.~address and port)
+of some node which should be contacted by default. When more nodes are
+spawned, the network is formed and the computation may be initialized.
+Note that information about neighbors spread in a nondeterministic
+manner, it matters who is contacted by whom. So it's good to have one or
+more nodes which are online most of the time and the rest contacts only
+these nodes. Otherwise the distribution of the neighborhood knowledge
+may be quite slow. Once the network is established, the computation can
+begin. If one (or more) nodes have tasks to be done, it can start the
+process. The file is then processed and divided into chunks in the
+initiating node. These chunks are distributed among neighbors, processed
+and returned back. Once the initiator has all chunks back, it joins them
 together and the process ends.
 
 C++ language has been chosen for the implementation. It allows us to use
@@ -266,26 +266,26 @@ When the node wants to use other computer's computation capacity, it
 naturally has to contact them first. But the node has no prior explicit
 knowledge of the network's infrastructure, moreover, this infrastructure
 can change dynamically. To solve this, each node maintains the list of
-its neighbors. It contains addresses of the nodes which it successfully
-contacted. The list is refreshed periodically, so the node keeps track
-of the current network state. Besides this main list exists another
-list, which contains potential neighbors. Generally each node that has
-communicated with the given one sometime in the past is added to the
-list of potential neighbors. The purpose of this list is to reduce
-amount of time spent with maintaining the neighbors list. That is, no
-more than required count of neighbors is maintained, but if needed,
-suggestions can be found in this backup list.
+its neighbors. It contains addresses of the nodes which it has contacted
+successfully. The list is refreshed periodically, so the node keeps
+track of the current network state. Besides this main list exists
+another list, which contains potential neighbors. Generally each node
+that has communicated with the given one sometime in the past is added
+to the list of potential neighbors. The purpose of this list is to
+reduce amount of time spent with maintaining the neighbors list. That
+is, no more than required count of neighbors is maintained, but if
+needed, suggestions can be found in this backup list.
 
-Neighbors are uniquely identified by the pair of address and
+Neighbors are uniquely identified by the pair consisting of address and
 communicating port. This is sufficient for the potential neighbors,
 because before the neighbor is added to the main list, it has to be
-contacted. Additional info is then added so more complex structure is
-needed for storing neighbors. This structure contains information about
-neighbor's quality, last known state etc. The quality of the neighbor
-helps to prefer one neighbor to the other when picking the one to
-contact. It is updated after each chunk delivered from the given
-neighbor and reflects the neighbors computation power together with the
-speed of the connection.
+contacted. Additional information is then added so more complex
+structure is needed for storing neighbors. This structure contains
+information about neighbor's quality, last known state etc. The quality
+of the neighbor helps to prefer one neighbor to another while picking
+the one to contact. It is updated after each chunk is delivered from the
+given neighbor and reflects the neighbors computation power together
+with the speed of the connection.
 
 \subsection*{Initialization and discovery}
 
@@ -331,11 +331,12 @@ informs them so they can react accordingly. That is, if the neighbor has
 tasks to process for the leaving one, it removes them from the queue and
 then removes the neighbor itself. Removed neighbors are completely lost,
 they are no longer stored in either of the lists. The process of saying
-goodbye to neighbors is asynchronous, the neighbors do respond with some
-acknowledgement message, but the leaving node does not wait for it,
-because it could cause potential deadlock in case that the other node is
-unable to respond for some reason. It is not needed anyway, since there
-is no possibility for the remote node to stop the withdrawing process.
+goodbye to neighbors is asynchronous, the withdrawing node does not wait
+for any confirmation. There are several reasons for this behavior.
+Waiting for the response could cause a deadlock under some specific
+circumstances, e.g.~if the contacted neighbor went down unexpectedly.
+Also, there is no need for it, since there is no possibility to stop the
+node from withdrawing.
 
 \subsection*{Neighbor's failure}
 
@@ -347,7 +348,7 @@ essential for the other nodes in the network to be informed about this
 fact. Especially it's very important for the initiator who had some
 tasks processed by this node. In order to ensure handling of this
 possibility the neighbor list is checked periodically. If some neighbor
-does not respond, it is removed fro the list and all the data connected
+does not respond, it is removed from the list and all the data connected
 with it are treated accordingly. Namely the chunks assigned to it are
 resent.
 
@@ -759,8 +760,8 @@ which spawns an external process. This function uses process forking,
 spawns the desired process and returns contents of its standard output
 and error streams. The function also accepts time after which it kills
 the process. The result of the process' run propagates in the function's
-return value so the caller can react accordingly. /this mechanism is
-used when working with video, namely splitting, encoding and joining it.
+return value so the caller can react accordingly. This mechanism is used
+when working with video, namely splitting, encoding and joining it.
 
 \subsection*{Working with the video}
 
@@ -880,8 +881,9 @@ every of these situations the same function is used, so the situation is
 always treated in the same way. The unresponsive neighbor is removed
 from the list. If it has some chunks assigned, i.e.~they has been sent
 to it already, they are queued for send to another neighbor. If it has
-chunks being processed by the current node, those chunks are trashed,
-because there will not be any us for them.
+sent some chunks to be processed by the current node, those chunks are
+trashed, because there will not be any use for them, since there is no
+neighbor to which they should be returned.
 
 \subsection*{Chunk disappearance}
 
@@ -895,20 +897,21 @@ being processed by two different neighbors at the same time. However,
 after it returns for the first time, it is put into the dedicated
 storage, so if it returns afterwards, it is simply rejected. But
 situation should not occur, since when the chunk returns, all assigned
-neighbors are notified. This approach could be improved by introducing
-new action which would cancel the chunk's encoding process at the remote
-node. It was not implemented though, because it is not clear on which
-node the process should be canceled. Connected with this problem is the
-situation, when one node receives by accident one chunk more times. The
-files are checked and what is more, the transfer uses temporary files so
-the worst scenario involves wasteful encoding of the chunk for the
-second time. Another issue which has to be solved is how to set the
-timeout. When the neighbor is involved for the first time, we have no
-information about its performance, so the timeout is set respectively to
-the size of the chunk, default multiplication factor is used. When the
-neighbor has already quality factor assigned, it is used to compute the
-timeout. So the quality coefficient can be seen as time needed to encode
-and transfer some unit of data.
+neighbors are notified, so they can cancel the computation. Connected
+with this problem is the situation, when one node receives by accident
+one chunk more times. The files are checked and what is more, the
+transfer uses temporary files so the worst scenario involves wasteful
+encoding of the chunk for the second time. For this reason, each node
+remembers all the chunks it has processed, so this can be avoided. It is
+important to store only the successfully processed ones, because if the
+chunk was damaged during the transfer, the initiator could ask for its
+repeated encoding. Another issue which has to be solved is how to set
+the timeout. When the neighbor is involved for the first time, we have
+no information about its performance, so the timeout is set respectively
+to the size of the chunk, default multiplication factor is used. When
+the neighbor has already quality factor assigned, it is used to compute
+the timeout. So the quality coefficient can be seen as time needed to
+encode and transfer some unit of data.
 
 \subsection*{Other errors}
 
@@ -934,9 +937,9 @@ final join operation. Another problem raises because of the fact that
 the transfers are quite demanding themselves so when more transfers are
 ongoing at a particular moment, the initiator is more utilized and the
 process could be slowed down due to this fact. This also implies that
-the improvement does not raise constantly when adding more nodes.
-Finally, we must consider that in the real situation delays can appear
-due to technical reasons, network congestion or node failures.
+the improvement does not raise linearly when adding more nodes. Finally,
+we must consider that in the real situation delays can appear due to
+technical reasons, network congestion or node failures.
 
 \section{Approach to testing}\label{approach-to-testing}
 
@@ -1018,116 +1021,208 @@ in the script.
 
 \section{Results}\label{results}
 
-\subsection{Linear Model}\label{linear-model}
+\subsection{Interpreting the results}\label{interpreting-the-results}
 
-Measurings showed, that the dependence between the number of involved
-nodes and the improvement is approximately logarithmic. Work with the
-data and the model was performed in the R Studio program. To evaluate
-the data, simple linear regression model was used. Specifically,
-subsequent formula was used:
-
-\begin{center}
-$\frac{distributed\_time}{single\_node\_time} = \beta_0 + \beta_1 \times log(neighbor\_count - 0.9)$
-\end{center}
-
-The absolute value has been added since the model fits better this way -
-in the case when one neighbor is used, the distributed computation is
-actually slower. The analysis of the model showed, that it makes sense
-to use this model. The assumptions such as homoscedasticity (constant
-variance) and independence of errors were verified using plots and
-results given by the R Studio\footnote{https://www.rstudio.com/}. Some
-of the mentioned outputs are given in the figures 3.1 and 3.2. We can
-see, that according to the p-values corresponding to coefficients, both
-of them are significant for the model. Residual standard error shows,
-that the variance is not too big. In the plots we can see that residuals
-has approximately constant variance. However, the second plot suggests,
-that they may not be distributed normally.
+In the Figure 3.1 are showed the achieved results, interpreted with
+respect to time needed by the single node. The x-axis shows count of
+nodes, the y-axis the portion of time needed by the distributed process.
+The blue dashed line represents the estimate which is based on the model
+which used hyperbolic function to predict the data. The obtained data
+are visualized as black crosses, red squares show respective mean
+values.
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.65]{./img/model.png}
+\includegraphics[scale=0.45]{./img/improvement_root.png}
+\caption{Achieved improvement - all measurements}
+\end{center}
+\end{figure}
+
+The figures 3.2 - 3.4 shows the achieved speedup. The y-axis shows the
+obtained speedup. The used model is further described in the next
+section. The data are represented by gray crosses, the estimation is
+visualized by the blue dashed line. The red line shows the linear
+function, which would be the ideal case. This linear function is of the
+form \textbackslash{}\textbackslash{}
+$y = q*x$\textbackslash{}\textbackslash{} where coefficient \textit{q}
+represents the influence of the time consumed by the data transfers. The
+Figure 3.4 shows, that for this chunk size the time spent with the
+distribution causes latencies when more nodes are employed. Each node
+waits for the chunk for too long since too many transfers are processed
+in parallel.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.45]{./img/Rplot_all.png}
+\caption{Achieved speedup - all measurements}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.45]{./img/Rplot10k.png}
+\caption{Achieved speedup - 10 MB chunks}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.45]{./img/Rplot40k.png}
+\caption{Achieved speedup - 40 MB chunks}
+\end{center}
+\end{figure}
+
+In the figures 3.5 and 3.6 are displayed ratios between particular
+operations performed during the process. The ratios are displayed with
+respect to the time, the serial execution would take. Each column
+represents one measurement (process). The first image displays data for
+chunks with 10 MB in size, the second shows 40 MB chunks. The data are
+sorted according to the number of neighbors used in the process. We can
+see that portion of time spent with network transfers is relatively
+small in our case. These charts were generated using the LibreOffice
+package\footnote{http://www.libreoffice.org/}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.5]{./img/comparison_chart.png}
+\caption{Comparison of operation times - 10 MB chunks}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.5]{./img/comparison_chart40k.png}
+\caption{Comparison of operation times - 40 MB chunks}
+\end{center}
+\end{figure}
+
+Figure 3.7 shows results of the experiment, in which one of the nodes
+was killed during the process and then spawned again. As a result,
+several chunks were sent more times, depending on the conditions in the
+network. The plot shows average number of chunk sent and achieved
+improvement. In this experiment, 40 MB chunks were used, displayed in
+the left side. Also, some of the experiments were intentionally run with
+no failure, so we can see in the left down corner results achieved with
+normal run and we can compare it. Those values are highlighted. We can
+see, that resending of chunks has great impact on the result. This
+problem could be reduced by using smaller chunks. When we used 5 MB
+chunks, the results improved significantly as showed in the right image
+in the Figure. This is caused by the fact, that with the same number of
+faults, the amount of work that needs to be done again is smaller when
+using smaller chunks. However, disadvantage of this approach is, that
+the split and join operations take slightly more time.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.30]{./img/failures_both.png}
+\caption{Impact of resending on the result}
+\end{center}
+\end{figure}
+
+\subsection{Linear Model}\label{linear-model}
+
+Work with the data and the model was performed in the R Studio program.
+To evaluate the data, simple linear regression model was used.
+Specifically, subsequent formula was used:
+
+\begin{center}
+$\frac{single\_node\_time}{distributed\_time} = \beta_0 + \beta_1 \times neighbor\_count + \beta_2 \times neighbor\_count^2 + \epsilon_i$
+\end{center}
+
+Higher powers were not used in order to not over fit the model. The
+analysis of the model showed, that it makes sense to use this model. The
+assumptions such as homoscedasticity (constant variance) and
+independence of errors were explored using plots and results given by
+the R Studio\footnote{https://www.rstudio.com/}. Some of the mentioned
+outputs are given in the figures 3.9 and 3.10. We can see, that
+according to the p-values corresponding to coefficients, all of them are
+significant for the model. Residual standard error shows, that the
+variance is not too big. In the plots we can see that the residuals
+unfortunately has not constant variance. The second plot also suggests,
+that they probably are not distributed normally. However, citation from
+\citep{ECON} says: ``heteroscedasticity has never been a reason to throw
+out an otherwise good model.'' So we used this model in our modeling. It
+may be questionable, whether we had enough measurements, however, the
+model seems to be good enough to describe the data and predict the
+behavior for more nodes. We can also notice, that the $\beta_2$
+coefficient is negative and since the squared value rises faster, there
+is some point at which the improvement stop raising, which corresponds
+to reality.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.60]{./img/model.png}
 \caption{Summary of the model}
 \end{center}
 \end{figure}
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.85]{./img/modelplot.pdf}
+\includegraphics[scale=0.45]{./img/model_plots.png}
 \caption{Graphical representation of the model data}
 \end{center}
 \end{figure}
 
-In the figures 3.3 - 3.5 are showed the achieved results. The blue
-dashed line represents the estimate which is based on the model. The
-obtained data are visualized as black crosses, red squares show
-respective mean values.
+\subsection{Upper Bounds}\label{upper-bounds}
 
-\begin{figure}[h]
+Overall time of the process can be divided into operations split, send,
+encode, receive and join (in this order). It is also influenced by
+searching appropriate neighbors, but it will not be taken into account
+in this analysis. Also, based on the data we can observe, that the time
+taken by the split operation is not very significant, therefore we can
+omit it. If we ask how big speedup can be achieved, we can use the
+Amdahl's law\footnote{https://en.wikipedia.org/wiki/Amdahl\'s\_law} to
+model the situation. The join operation can not be parallelized. The
+encoding itself is parallelized completely. The data transfer operations
+are performed theoretically in parallel, however, in practice we are
+limited by the network throughput and the system resources of the
+initiator, i.e.~how many data transfers it can handle in parallel. This
+can be influenced by the OS, disk speed or even operation memory.
+Because this number is limited, the initiator can not employ arbitrary
+number of nodes effectively. If we want to deal with this problem, we
+have to consider several facts. The speed of the distribution is
+influenced by the ability of the nodes to receive the data with no
+delay, so we assume that buffering and disk operations do not slow down
+the process. Also, the full network capacity cannot be used because of
+other ongoing transfers. Also some portion of the capacity is consumed
+by the redundant information used by the TCP/IP protocol. For the sake
+of simplicity, we will make the assumption, that the capacity
+corresponds to the actual amount of useful data transfered. We also must
+not forgot, that the sizes of original and received chunks differs.
+Finally, we treat the parallel transfer over the network as it took the
+same time as the serial, which does not have to be always true. We will
+consider the size of received chunks to be $k$ times bigger than the
+size of the send ones and count with this size. Let $c$ be the amount of
+data that can be transfered over the network per one second, $s$ chunk
+size and $t$ time needed to encode one chunk (again, we assume the
+encoding times are the same for all the nodes). Then maximum number $n$
+of effectively employed nodes must fulfill the inequality:
+$\frac{n \times s}{c} \leq t$ since otherwise the transfer would take
+more time than the encoding, so the encoded chunks would have to wait.
+
+To applicate the Amdahl's law, we must determine the fraction of the
+algorithm that is strictly serial. This involves the splitting and
+joining. We consider the data transfers to be parallelized with the
+preceding paragraph in mind. According to the results, the split and
+join operations take approximately 7.5\% of time in average. So
+according to the basic form of the law, the theoretical maximum speedup
+should be obtained from the following formula:
+
 \begin{center}
-\includegraphics[scale=0.90]{./img/Rplot.pdf}
-\caption{Achieved improvement - all measurements}
+$S=\lim_{n \to +\infty} \frac{1}{B + \frac{1}{n}(1 - B)} = \frac{1}{B} = \frac{1}{0.075} = 13.33$
 \end{center}
-\end{figure}
 
-\begin{figure}[h]
+Where $B$ represents the serial fraction. This result is strictly
+theoretical and does not correspond to real situation, mainly because of
+the problems mentioned above. We can obtain more realistic results by
+using the formula to estimate the parallel fraction of time.
+
 \begin{center}
-\includegraphics[scale=0.90]{./img/Rplot10k.pdf}
-\caption{Achieved improvement - 10 MB chunks}
+$P_{est} = \frac{\frac{1}{speedup}-1}{\frac{1}{node count} - 1}$
 \end{center}
-\end{figure}
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.90]{./img/Rplot.pdf}
-\caption{Achieved improvement - 40 MB chunks}
-\end{center}
-\end{figure}
-
-In the figures 3.6, 3.7 and 3.8 are displayed ratios between particular
-chunk operations. The first two shows average values per one chunk (so
-the join and split times are just for an illustration), sorted in
-ascending order by the chunk size, the latter shows the summations. We
-can see that portion of time spent with network transfers is relatively
-small in our case. These diagrams were generated using the LibreOffice
-package\footnote{http://www.libreoffice.org/}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.90]{./img/chunks1.png}
-\caption{Comparison of operations}
-\end{center}
-\end{figure}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.90]{./img/chunks1_2.png}
-\caption{Comparison of operations}
-\end{center}
-\end{figure}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.90]{./img/chunks2.png}
-\caption{Comparison of operations - times summed}
-\end{center}
-\end{figure}
-
-Figure 3.9. shows results of the experiment, in which one of the nodes
-was killed during the process and then spawned again. As a result,
-several chunks were send more times, depending on the conditions in the
-network. The plot shows average number of chunk send and achieved
-improvement. We can see, that resending of chunks has great impact on
-the result. It introduces a thought, that sending each chunk two times
-preventively could be desirable in the environments with high
-probability of faults. Also, this problem could be reduced by using
-smaller chunks.
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.90]{./img/failures.pdf}
-\caption{Impact of resending to the result}
-\end{center}
-\end{figure}
+For our data the estimation equals $0.89$, which gives us theoretical
+speedup $9.09$.
 \chapter{Problems, alternatives and possible
 improvements}\label{problems-alternatives-and-possible-improvements}
 
@@ -1169,13 +1264,17 @@ centralization of control to one specific node.
 
 Maybe the biggest unnecessary delay could appear when the whole process
 waits for some lost chunk. This is partially solved by resending chunks
-after the timeout. Also some form of redundancy could help. If some node
-is processing more tasks sequentially while using approximately the same
+after the timeout. Also some form of redundancy could help, which on the
+other hand would certainly affect the effectiveness. If some node is
+processing more tasks sequentially while using approximately the same
 set of neighbors, the framework could also determine optimal chunk size
 to achieve good ratio of transfer and computing times (the chunk should
 not be too small because of the delays tied with its distribution) while
 minimizing the possible delay caused by waiting for re-encoding of some
-lost chunk.
+lost chunk. We could see at the end of the
+\hyperref[interpreting-the-results]{chapter 3}, that use of smaller
+chunk size leads to better performance, specifically when the failure of
+some node occurs, the difference is quite significant.
 
 Also the current implementation creates a separate connection for each
 data transfer. Alternatively, each chunk could be delivered and returned
@@ -1226,5 +1325,105 @@ of commands and for each sequence there is a special connection.
 %%% at least once from one's own text of the thesis. Attachments are numbered.
 \chapwithtoc{Attachments}
 
+\section*{Appendix A - Installation and use}
+\subsection*{Download} 
+First it's essential to get the source code. You can clone the code directly from the git repository using command
+\begin{verbatim}
+# git clone https://github.com/vojtsek/VideoCompression.git
+\end{verbatim}
+Alternatively you can download the zip file and unpack it in some directory.
+
+\subsection*{Requirements, installation and first run}
+To run the program successfully it's essential to have \textit{ffmpeg} and \textit{ffprobe} installed on your computer. Although technically it doesn't matter which codec is used, the program currently uses only H.264 standard for encoding of the output, so it assumes the \textit{ffmpeg} has been compiled with the \textit{x264} codec. Otherwise the program does not have any special requirements except standard libraries which should be available on all UNIX systems, so once you installed these programs, you can change to the directory containing the source code and run the installation script:
+\begin{verbatim}
+# cd DVC
+# ./install.sh
+\end{verbatim}
+The installation script is a regular Bash script, so the Bourne again shell interpreter is required to run it successfully. It explores your computer, i.e. gets the IP address, finds location of \textit{ffmpeg} binaries etc. Then it creates home directory for the program. The home directory contains data of the program's run. These include intermediate results as well as the final result and log files. The installation continues with generating the configuration file. This file is crucial for the framework. Before setting each option, the script prompts you for confirmation of the value. If you type nothing and just press the Enter key, the suggested value is used, otherwise the script uses your input. The resulting file is stored in the \textit{bin} directory which is created during the installation. It's a plain text file so you can edit it anytime in the future. The script then continues with compilation of the program. If everything is all right, you can change to the newly created \textit{bin} directory and continue. The directory \textit{bin/lists} contains some supporting files that should not be change, otherwise the program could behave improperly.
+
+The last step before you can run the program is to check the configuration. The configuration is saved in the \textit{bin/CONF} file, which is created by the installation script. It's important to provide valid path to the \textit{ffmpeg} and \textit{ffprobe} executable and address with port of the neighbor that should be contacted initially. Otherwise you won't be able to join the network. The field \textit{MY\_IP} is not essential as long as the initial neighbor is alive - it will be recognized automatically. 
+
+Then you can finally run the program. Some of the settings can be changed by providing options, the available ones are listed in the table 4.1.
+
+\begin{table}[h]
+\begin{center}
+ \begin{tabular}{ | l | c |}
+   \hline
+-s & no address will be contacted initially \\ \hline
+-n [address]:port\_number & node to contact initially \\ \hline
+-a [address]:port\_number & address and port to bound to \\ \hline
+-h & directory path to the home directory \\ \hline
+-i file & file to encode \\ \hline
+-p port & listening port \\ \hline
+-d level & debug level \\ \hline
+-q quality & quality of encoding \\ \hline
+ \end{tabular}
+ \caption{Table of the possible options.}
+ \end{center}
+\end{table}
+
+If the string "\textit{IPv4}" appears among parameters, the program will use only the IPv4 addresses\footnote{https://en.wikipedia.org/wiki/IPv4},
+in which case should be the \textit{CONF} file changed appropriately.
+
+\subsection*{Using the program}
+When you run the program, the initial screen appears. You can choose desired action then using function keys. You can see the initial screen in the figure 4.1. Available options are highlighted.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.35]{./img/init-screen.pdf}
+\label{initial-screen}
+\caption[initial-screen]{Initial screen after joining.}
+\end{center}
+\end{figure}
+
+The important key bindings are listed in the table 4.2.
+\begin{table}[h]
+\begin{center}
+ \begin{tabular}{ | l | c |}
+   \hline
+   F6 & Show information \\ \hline
+   F7 & Start the process \\ \hline
+   F8 & Load the file \\ \hline
+   F9 & Set values \\ \hline
+   F10 & Abort the process \\ \hline
+   F12 & Quit the program \\ \hline
+   Up, Down & Traverse available options \\ \hline
+   Enter & Confirm the input \\
+ 	\hline
+ \end{tabular}
+ \caption{Table of the control keys.}
+ \end{center}
+\end{table}
+
+First you should load the video file. When the corresponding function key is pressed, the program prompts you for the file location. You can type in the absolute path of the file. Once you use the file, it is stored in history which you can browse using up and down arrow keys. This can be seen in the figure 4.2.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.35]{./img/loading.pdf}
+\label{loading-files}
+\caption{Loading the file.}
+\end{center}
+\end{figure}
+
+Then you can set some parameters or show different information using F6 respectively F9 function keys. These keys provides set of options which you can choose from. When you are satisfied with the settings, you can start the process.
+The program then starts splitting the file and distributing the chunks while informing you about the progress. When the process is done, the file is joined and you can do further actions. Some screenshots from the ongoing process are displayed at the figures 4.3, 4.4 and 4.5
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.35]{./img/process-initiator.pdf}
+\caption{Overview of the process.}
+\end{center}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.35]{./img/processing.pdf}
+\caption{Processing of the tasks.}
+\end{center}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.35]{./img/joining.pdf}
+\caption{Joining the file.}
+\end{center}
+\end{figure}
+
+To obtain more information about what is going on, the \textit{-d} option may be used which allows to specify level of debug messages that will be showed.
 \openright
 \end{document}

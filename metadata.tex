@@ -1,10 +1,10 @@
 %%% Basic information on the thesis
 
 % Thesis title in English (exactly as in the formal assignment)
-\def\ThesisTitle{Thesis title}
+\def\ThesisTitle{Distributed video compression in the peer to peer network}
 
 % Author of the thesis
-\def\ThesisAuthor{Vojtech Hudecek}
+\def\ThesisAuthor{Vojtěch Hudeček}
 
 % Year when the thesis is submitted
 \def\YearSubmitted{2015}
@@ -18,10 +18,10 @@
 \def\DeptType{Department}
 
 % Thesis supervisor: name, surname and titles
-\def\Supervisor{Supervisor's Name}
+\def\Supervisor{JUDr., Mgr. Antonín Steinhauser}
 
 % Supervisor's department (again according to Organizational structure of MFF)
-\def\SupervisorsDepartment{Department of Distributed and Depandable Systems}
+\def\SupervisorsDepartment{Department of Distributed and Dependable Systems}
 
 % Study programme and specialization
 \def\StudyProgramme{Computer Science}
@@ -30,7 +30,7 @@
 % An optional dedication: you can thank whomever you wish (your supervisor,
 % consultant, a person who lent the software, etc.)
 \def\Dedication{%
-Dedication.
+I would like to thank to Mr. Marek and Mr. Steinhauser for valuable advice and patient supervising. I would not be able to finish this work without them. My thanks also belongs to my family and friends for support and patience, not only during the work on the thesis but during all my studies.
 }
 
 % Abstract (recommended length around 80-200 words; this is not a copy of your thesis assignment!)
@@ -38,7 +38,7 @@ Dedication.
 Despite today's computers' performance
 there still exist some tasks that are quite time demanding. Nature of some
 of these tasks allows to split them into smaller parts that can be processed in parallel.
-Distributing work among more computers in order to speed up the process is a common
+Distributing work among more computers in order to speed up such processes is a common
 technique. However, most of the approaches use client-server architecture
 to achieve this goal. We provide purely peer-to-peer solution which
 allows high level of scalability, error recovery and easy maintaining.
@@ -50,4 +50,42 @@ Tests showed that significant improvement can be achieved in local area networks
 % 3 to 5 keywords (recommended), each enclosed in curly braces
 \def\Keywords{%
 {Parallelization} {Peer to Peer} {Distributed computing} {Video encoding}
+} 
+
+% Thesis title in English (exactly as in the formal assignment)
+\def\ThesisTitleCZ{Distribuovaná komprese videa v peer to peer sítích}
+
+% Author of the thesis
+\def\ThesisAuthorCZ{Vojtěch Hudeček}
+
+% Year when the thesis is submitted
+\def\YearSubmittedCZ{2015}
+
+% Name of the department or institute, where the work was officially assigned
+% (according to the Organizational Structure of MFF UK in English,
+% or a full name of a department outside MFF)
+\def\DepartmentCZ{Katedra distribuovaných a spolehlivých systémů}
+
+% Is it a department (katedra), or an institute (ústav)?
+\def\DeptTypeCZ{Katedra}
+
+% Thesis supervisor: name, surname and titles
+\def\SupervisorCZ{JUDr., Mgr. Antonín Steinhauser}
+
+% Supervisor's department (again according to Organizational structure of MFF)
+\def\SupervisorsDepartmentCZ{Katedra distribuovaných a spolehlivých systémů}
+
+% Study programme and specialization
+\def\StudyProgrammeCZ{Informatika}
+\def\StudyBranchCZ{Obecná informatika}
+
+% Abstract (recommended length around 80-200 words; this is not a copy of your thesis assignment!)
+\def\AbstractCZ{%
+Navzdory vysokému a stále rostoucímu výkonu dnešních počítačů se stále setkáváme s úkoly, které jsou velmi časově náročné. Některé z nich lze rozdělit na menší podúkoly, které mohou být zpracovány paralelně. Běžnou technikou je rozdělení práce mezi více počítačů za účelem zrychlení celého procesu. Většinou se nicméně setkáváme s přístupy, které jsou založeny na architekturách typu klient-server. V této práci představujeme čistě peer to peer řešení, které umožňuje škálovatelnost, zotavení z chyb a snadné spravování.
+V našem frameworku není vyčleněna žádná speciální role a kterýkoli výpočetní uzel se může kdykoli připojit nebo odpojit. Systém se také dokáže vyrovnat se selháními uzlů při zachování dobrého výpočetního času. Testování ukázalo, že v lokálních sítích můžeme dosáhnout několikanásobného zrychlení.
+}
+
+% 3 to 5 keywords (recommended), each enclosed in curly braces
+\def\KeywordsCZ{%
+{Paralelizace} {Peer to Peer} {Distribuované výpočty} {Kódování videa}
 } 

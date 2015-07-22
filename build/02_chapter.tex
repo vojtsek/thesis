@@ -290,8 +290,8 @@ which spawns an external process. This function uses process forking,
 spawns the desired process and returns contents of its standard output
 and error streams. The function also accepts time after which it kills
 the process. The result of the process' run propagates in the function's
-return value so the caller can react accordingly. /this mechanism is
-used when working with video, namely splitting, encoding and joining it.
+return value so the caller can react accordingly. This mechanism is used
+when working with video, namely splitting, encoding and joining it.
 
 \subsection*{Working with the video}
 
@@ -411,8 +411,9 @@ every of these situations the same function is used, so the situation is
 always treated in the same way. The unresponsive neighbor is removed
 from the list. If it has some chunks assigned, i.e.~they has been sent
 to it already, they are queued for send to another neighbor. If it has
-chunks being processed by the current node, those chunks are trashed,
-because there will not be any us for them.
+sent some chunks to be processed by the current node, those chunks are
+trashed, because there will not be any use for them, since there is no
+neighbor to which they should be returned.
 
 \subsection*{Chunk disappearance}
 
@@ -426,20 +427,21 @@ being processed by two different neighbors at the same time. However,
 after it returns for the first time, it is put into the dedicated
 storage, so if it returns afterwards, it is simply rejected. But
 situation should not occur, since when the chunk returns, all assigned
-neighbors are notified. This approach could be improved by introducing
-new action which would cancel the chunk's encoding process at the remote
-node. It was not implemented though, because it is not clear on which
-node the process should be canceled. Connected with this problem is the
-situation, when one node receives by accident one chunk more times. The
-files are checked and what is more, the transfer uses temporary files so
-the worst scenario involves wasteful encoding of the chunk for the
-second time. Another issue which has to be solved is how to set the
-timeout. When the neighbor is involved for the first time, we have no
-information about its performance, so the timeout is set respectively to
-the size of the chunk, default multiplication factor is used. When the
-neighbor has already quality factor assigned, it is used to compute the
-timeout. So the quality coefficient can be seen as time needed to encode
-and transfer some unit of data.
+neighbors are notified, so they can cancel the computation. Connected
+with this problem is the situation, when one node receives by accident
+one chunk more times. The files are checked and what is more, the
+transfer uses temporary files so the worst scenario involves wasteful
+encoding of the chunk for the second time. For this reason, each node
+remembers all the chunks it has processed, so this can be avoided. It is
+important to store only the successfully processed ones, because if the
+chunk was damaged during the transfer, the initiator could ask for its
+repeated encoding. Another issue which has to be solved is how to set
+the timeout. When the neighbor is involved for the first time, we have
+no information about its performance, so the timeout is set respectively
+to the size of the chunk, default multiplication factor is used. When
+the neighbor has already quality factor assigned, it is used to compute
+the timeout. So the quality coefficient can be seen as time needed to
+encode and transfer some unit of data.
 
 \subsection*{Other errors}
 

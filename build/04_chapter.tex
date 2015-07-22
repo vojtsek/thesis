@@ -39,13 +39,17 @@ centralization of control to one specific node.
 
 Maybe the biggest unnecessary delay could appear when the whole process
 waits for some lost chunk. This is partially solved by resending chunks
-after the timeout. Also some form of redundancy could help. If some node
-is processing more tasks sequentially while using approximately the same
+after the timeout. Also some form of redundancy could help, which on the
+other hand would certainly affect the effectiveness. If some node is
+processing more tasks sequentially while using approximately the same
 set of neighbors, the framework could also determine optimal chunk size
 to achieve good ratio of transfer and computing times (the chunk should
 not be too small because of the delays tied with its distribution) while
 minimizing the possible delay caused by waiting for re-encoding of some
-lost chunk.
+lost chunk. We could see at the end of the
+\hyperref[interpreting-the-results]{chapter 3}, that use of smaller
+chunk size leads to better performance, specifically when the failure of
+some node occurs, the difference is quite significant.
 
 Also the current implementation creates a separate connection for each
 data transfer. Alternatively, each chunk could be delivered and returned

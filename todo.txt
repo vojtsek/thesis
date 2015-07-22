@@ -1,2 +1,1 @@
 max neighbors
-map of encoded chunks

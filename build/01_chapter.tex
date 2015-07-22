@@ -2,20 +2,20 @@
 
 \section{Known approaches}\label{known-approaches}
 
-The idea of distributed computing was here since the 70's. Different
-approaches have been tried since then. Some of them are described in
-this section in order to show different concepts.
+The idea of distributed computing has been here since the 70's.
+Different approaches have been tried since then. Some of them are
+described in this section in order to show different concepts.
 
 \subsection{Client/server architecture}\label{clientserver-architecture}
 
 It's very common example of centralized system. In this pattern is one
 central node, known as the server and the rest of nodes, clients, are
-all connected to it. All the information and important computations
-happens at the server. The communication is typically initialized by the
-client, which sends a request, the server processes it and returns the
-desired result. Pros of this approach are relatively simple
-implementation and easy control of the traffic, because all the data
-passes through server. Also the data flow can be controlled easily.
+all connected to it. All the information is stored and important
+computations happen at the server. The communication is typically
+initialized by the client, which sends a request, the server processes
+it and returns the desired result. Pros of this approach are relatively
+simple implementation and easy control of the traffic, because all the
+data passes through server. Also the data flow can be controlled easily.
 However the huge disadvantage is, that the server is by definition a
 single point of failure, i.e.~if it goes down, the whole system becomes
 unusable. Also, thanks to the asymmetric nature of the system, there
@@ -57,8 +57,8 @@ very good.
 
 \subsection{Summary}\label{summary}
 
-We have shown different implementations of the idea of distributing the
-work. Each have its own specifics and may be suitable for some
+We showed different implementations of the idea of distributing the
+work. Each has its own specifics and may be suitable for some
 application. We have chosen to implement our framework to behave like a
 pure peer to peer system as much as possible. Although the super peer
 architecture offers better control, we decided not to use it for several
@@ -156,13 +156,13 @@ This is possible, because the files are divided into pieces and when the
 node downloads some piece, it becomes source of this piece for the
 others. The pieces are marked so they can be downloaded in random order.
 The system provides good redundancy. Another advantage is, that as the
-file spreads in the network, the requirements on original distributor's
-bandwidth decreases. Eventually the node could not be needed at all.
-This protocol is used for file sharing by the BOINC framework, among
-many others. It certainly is an interesting alternative to handle the
-file transfers. In our framework, the use of this protocol would not be
-very convenient and useful, since once the chunk is processed, it
-becomes useless.\citep{BitTor}
+file spreads through the network, the requirements on original
+distributor's bandwidth decrease. Eventually the node could not be
+needed at all. This protocol is used for file sharing by the BOINC
+framework, among many others. It certainly is an interesting alternative
+to handle the file transfers. In our framework, the use of this protocol
+would not be very convenient and useful, since once the chunk is
+processed, it becomes useless.\citep{BitTor}
 
 \section{Framework description}\label{framework-description}
 
@@ -171,19 +171,19 @@ becomes useless.\citep{BitTor}
 The heart of the program is one executable file, that should be
 accompanied by the configuration file. This is discussed in detail in
 \hyperref[installation-and-use]{appendix A}. Main options that should be
-set are IP address and a number of port on which the program should
-listen. It is also essential to provide credentials (i.e.~address and
-port) of some node which should be contacted by default. When more nodes
-are spawned, the network is formed and the computation may begin. Note
-that information about neighbors spread in a nondeterministic manner, it
-matters who is contacted by whom. So it's good to have one or more nodes
-which are online most of the time and the rest contacts only these
-nodes. Otherwise the distribution of the neighborhood knowledge may be
-quite slow. Once the network is established, the computation can begin.
-If one (or more) nodes have tasks to be done, it can start the process.
-The file is then processed and divided into chunks in the initiating
-node. These chunks are distributed among neighbors, processed and
-returned back. Once the initiator has all chunks back, it joins them
+set are IP address and a number of port which the program should listen
+on. It is also essential to provide credentials (i.e.~address and port)
+of some node which should be contacted by default. When more nodes are
+spawned, the network is formed and the computation may be initialized.
+Note that information about neighbors spread in a nondeterministic
+manner, it matters who is contacted by whom. So it's good to have one or
+more nodes which are online most of the time and the rest contacts only
+these nodes. Otherwise the distribution of the neighborhood knowledge
+may be quite slow. Once the network is established, the computation can
+begin. If one (or more) nodes have tasks to be done, it can start the
+process. The file is then processed and divided into chunks in the
+initiating node. These chunks are distributed among neighbors, processed
+and returned back. Once the initiator has all chunks back, it joins them
 together and the process ends.
 
 C++ language has been chosen for the implementation. It allows us to use
@@ -206,26 +206,26 @@ When the node wants to use other computer's computation capacity, it
 naturally has to contact them first. But the node has no prior explicit
 knowledge of the network's infrastructure, moreover, this infrastructure
 can change dynamically. To solve this, each node maintains the list of
-its neighbors. It contains addresses of the nodes which it successfully
-contacted. The list is refreshed periodically, so the node keeps track
-of the current network state. Besides this main list exists another
-list, which contains potential neighbors. Generally each node that has
-communicated with the given one sometime in the past is added to the
-list of potential neighbors. The purpose of this list is to reduce
-amount of time spent with maintaining the neighbors list. That is, no
-more than required count of neighbors is maintained, but if needed,
-suggestions can be found in this backup list.
+its neighbors. It contains addresses of the nodes which it has contacted
+successfully. The list is refreshed periodically, so the node keeps
+track of the current network state. Besides this main list exists
+another list, which contains potential neighbors. Generally each node
+that has communicated with the given one sometime in the past is added
+to the list of potential neighbors. The purpose of this list is to
+reduce amount of time spent with maintaining the neighbors list. That
+is, no more than required count of neighbors is maintained, but if
+needed, suggestions can be found in this backup list.
 
-Neighbors are uniquely identified by the pair of address and
+Neighbors are uniquely identified by the pair consisting of address and
 communicating port. This is sufficient for the potential neighbors,
 because before the neighbor is added to the main list, it has to be
-contacted. Additional info is then added so more complex structure is
-needed for storing neighbors. This structure contains information about
-neighbor's quality, last known state etc. The quality of the neighbor
-helps to prefer one neighbor to the other when picking the one to
-contact. It is updated after each chunk delivered from the given
-neighbor and reflects the neighbors computation power together with the
-speed of the connection.
+contacted. Additional information is then added so more complex
+structure is needed for storing neighbors. This structure contains
+information about neighbor's quality, last known state etc. The quality
+of the neighbor helps to prefer one neighbor to another while picking
+the one to contact. It is updated after each chunk is delivered from the
+given neighbor and reflects the neighbors computation power together
+with the speed of the connection.
 
 \subsection*{Initialization and discovery}
 
@@ -271,11 +271,12 @@ informs them so they can react accordingly. That is, if the neighbor has
 tasks to process for the leaving one, it removes them from the queue and
 then removes the neighbor itself. Removed neighbors are completely lost,
 they are no longer stored in either of the lists. The process of saying
-goodbye to neighbors is asynchronous, the neighbors do respond with some
-acknowledgement message, but the leaving node does not wait for it,
-because it could cause potential deadlock in case that the other node is
-unable to respond for some reason. It is not needed anyway, since there
-is no possibility for the remote node to stop the withdrawing process.
+goodbye to neighbors is asynchronous, the withdrawing node does not wait
+for any confirmation. There are several reasons for this behavior.
+Waiting for the response could cause a deadlock under some specific
+circumstances, e.g.~if the contacted neighbor went down unexpectedly.
+Also, there is no need for it, since there is no possibility to stop the
+node from withdrawing.
 
 \subsection*{Neighbor's failure}
 
@@ -287,7 +288,7 @@ essential for the other nodes in the network to be informed about this
 fact. Especially it's very important for the initiator who had some
 tasks processed by this node. In order to ensure handling of this
 possibility the neighbor list is checked periodically. If some neighbor
-does not respond, it is removed fro the list and all the data connected
+does not respond, it is removed from the list and all the data connected
 with it are treated accordingly. Namely the chunks assigned to it are
 resent.
 
