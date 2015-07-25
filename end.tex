@@ -45,14 +45,14 @@ First it's essential to get the source code. You can clone the code directly fro
 Alternatively you can download the zip file and unpack it in some directory.
 
 \subsection*{Requirements, installation and first run}
-To run the program successfully it's essential to have \textit{ffmpeg} and \textit{ffprobe} installed on your computer. Although technically it doesn't matter which codec is used, the program currently uses only H.264 standard for encoding of the output, so it assumes the \textit{ffmpeg} has been compiled with the \textit{x264} codec. Otherwise the program does not have any special requirements except standard libraries which should be available on all UNIX systems, so once you installed these programs, you can change to the directory containing the source code and run the installation script:
+You must have \textit{ffmpeg} and \textit{ffprobe} installed on your computer, if you want to run the program successfully. Although technically it doesn't matter which codec is used, the program currently uses H.264 standard as a default, so it assumes the \textit{ffmpeg} has been compiled with the \textit{x264} codec support. Otherwise the program does not have any special requirements except standard libraries which should be available on all UNIX systems. When you install these programs, you can change to the directory containing the source code and run the installation script:
 \begin{verbatim}
-# cd DVC
+# cd VideoCompression
 # ./install.sh
 \end{verbatim}
-The installation script is a regular Bash script, so the Bourne again shell interpreter is required to run it successfully. It explores your computer, i.e. gets the IP address, finds location of \textit{ffmpeg} binaries etc. Then it creates home directory for the program. The home directory contains data of the program's run. These include intermediate results as well as the final result and log files. The installation continues with generating the configuration file. This file is crucial for the framework. Before setting each option, the script prompts you for confirmation of the value. If you type nothing and just press the Enter key, the suggested value is used, otherwise the script uses your input. The resulting file is stored in the \textit{bin} directory which is created during the installation. It's a plain text file so you can edit it anytime in the future. The script then continues with compilation of the program. If everything is all right, you can change to the newly created \textit{bin} directory and continue. The directory \textit{bin/lists} contains some supporting files that should not be change, otherwise the program could behave improperly.
+The installation script is a regular Bash script, so the Bourne again shell interpreter is required to run it successfully. It uses utilities that are common part of every Linux distribution. If some of it is not present, you can either install it or do the preparation yourself. The script explores your computer, i.e. gets the IP address, finds location of \textit{ffmpeg} binaries etc. Then it creates home directory for the program. The home directory contains data of the program's run. These include intermediate results as well as the final result and log files. The installation continues with generating the configuration file. This file is crucial for the framework. Before setting each option, the script prompts you for confirmation of the value. If you type nothing and just press the \textit{Enter} key, the suggested value is used, otherwise the script uses your input. The result configuration file is stored in the \textit{bin/} directory which is created during the installation. It's a plain text file so you can edit it anytime in the future. The script then continues with compilation of the program. If everything is all right, you can change to the newly created \textit{bin/} directory and continue. The directory \textit{bin/lists/} contains some supporting files that should not be changed. Otherwise the program could behave improperly.
 
-The last step before you can run the program is to check the configuration. The configuration is saved in the \textit{bin/CONF} file, which is created by the installation script. It's important to provide valid path to the \textit{ffmpeg} and \textit{ffprobe} executable and address with port of the neighbor that should be contacted initially. Otherwise you won't be able to join the network. The field \textit{MY\_IP} is not essential as long as the initial neighbor is alive - it will be recognized automatically. 
+The last step before you can run the program is to check the configuration. The configuration is saved in the \textit{bin/CONF} file, which is created by the installation script. It's important to provide valid path to the \textit{ffmpeg} and \textit{ffprobe} executables and address with port of the neighbor that should be contacted initially. Otherwise you won't be able to join the network. The field \textit{MY\_IP} is not essential as long as the initial neighbor is alive - it will be recognized automatically. 
 
 Then you can finally run the program. Some of the settings can be changed by providing options, the available ones are listed in the table 4.1.
 
@@ -65,7 +65,7 @@ Then you can finally run the program. Some of the settings can be changed by pro
 -a [address]:port\_number & address and port to bound to \\ \hline
 -h & directory path to the home directory \\ \hline
 -i file & file to encode \\ \hline
--p port & listening port \\ \hline
+-p port\_number & listening port \\ \hline
 -d level & debug level \\ \hline
 -q quality & quality of encoding \\ \hline
  \end{tabular}
@@ -73,14 +73,14 @@ Then you can finally run the program. Some of the settings can be changed by pro
  \end{center}
 \end{table}
 
-If the string "\textit{IPv4}" appears among parameters, the program will use only the IPv4 addresses\footnote{https://en.wikipedia.org/wiki/IPv4},
+If the string \textit{IPv4} appears among parameters, the program will use only the IPv4 addresses\footnote{https://en.wikipedia.org/wiki/IPv4},
 in which case should be the \textit{CONF} file changed appropriately.
 
 \subsection*{Using the program}
-When you run the program, the initial screen appears. You can choose desired action then using function keys. You can see the initial screen in the figure 4.1. Available options are highlighted.
+When you run the program, the initial screen appears. You can perform desired action using function keys. You can see the initial screen in the Figure 4.1. Available options are highlighted.
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.35]{./img/init-screen.pdf}
+\includegraphics[scale=0.30]{./img/init-screen.pdf}
 \label{initial-screen}
 \caption[initial-screen]{Initial screen after joining.}
 \end{center}
@@ -105,35 +105,42 @@ The important key bindings are listed in the table 4.2.
  \end{center}
 \end{table}
 
-First you should load the video file. When the corresponding function key is pressed, the program prompts you for the file location. You can type in the absolute path of the file. Once you use the file, it is stored in history which you can browse using up and down arrow keys. This can be seen in the figure 4.2.
+First you should load the video file. When the corresponding function key is pressed, the program prompts you for the file location. You can type in the absolute path of the file. Once you use the file, it is stored in history which you can browse using up and down arrow keys. This can be seen in the Figure 4.2.
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.35]{./img/loading.pdf}
+\includegraphics[scale=0.30]{./img/loading.pdf}
 \label{loading-files}
 \caption{Loading the file.}
 \end{center}
 \end{figure}
 
 Then you can set some parameters or show different information using F6 respectively F9 function keys. These keys provides set of options which you can choose from. When you are satisfied with the settings, you can start the process.
-The program then starts splitting the file and distributing the chunks while informing you about the progress. When the process is done, the file is joined and you can do further actions. Some screenshots from the ongoing process are displayed at the figures 4.3, 4.4 and 4.5
+The program then starts splitting the file and distributing the chunks. It also keeps informing you about the progress. When the process is done, the file is joined and you can do further actions. You can find the result in the provided work directory. There should appear new folder with a timestamp of the current job. It contains the file named \textit{orig\_output.mkv}, where \textit{orig} is the base name of the input file. Some screenshots from the ongoing process are displayed in the Figures 4.3, 4.4 and 4.5
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.35]{./img/process-initiator.pdf}
+\includegraphics[scale=0.30]{./img/process-initiator.pdf}
 \caption{Overview of the process.}
 \end{center}
 \end{figure}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.35]{./img/processing.pdf}
+\includegraphics[scale=0.30]{./img/processing.pdf}
 \caption{Processing of the tasks.}
 \end{center}
 \end{figure}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.35]{./img/joining.pdf}
+\includegraphics[scale=0.30]{./img/joining.pdf}
 \caption{Joining the file.}
 \end{center}
 \end{figure}
 
 To obtain more information about what is going on, the \textit{-d} option may be used which allows to specify level of debug messages that will be showed.
+\section*{Appendix B - Attached software}
+All the attached software can be found on the attached CD. It contains:
+\begin{enumerate}
+\item Sources of the framework, together with the installation script in the \textit{VideoCompression/} directory. This directory also contains the \textit{rapidjson} library and license agreements.
+\item Documentation in the \textit{doc/} directory. To view this documentation, it is recommended to open the index.html file in your favorite html browser.
+\item FFmpeg and x264 codec sources in the \textit{ffmpeg/} and \textit{x264/} directory.
+\end{enumerate} 
 \openright

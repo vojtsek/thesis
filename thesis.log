@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.5.12)  21 JUL 2015 19:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.5.12)  25 JUL 2015 14:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -562,38 +562,38 @@ Chapter 1.
 ] [7] [8]
 
 LaTeX Warning: Hyper reference `installation-and-use' on page 9 undefined on in
-put line 233.
+put line 236.
 
-[9] <./img/workflow_neighbors.pdf, id=358, 794.97pt x 794.97pt>
+[9] <./img/workflow_neighbors.pdf, id=366, 794.97pt x 794.97pt>
 File: ./img/workflow_neighbors.pdf Graphic file (type pdf)
 
 <use ./img/workflow_neighbors.pdf>
-Package pdftex.def Info: ./img/workflow_neighbors.pdf used on input line 308.
+Package pdftex.def Info: ./img/workflow_neighbors.pdf used on input line 316.
 (pdftex.def)             Requested size: 317.98236pt x 317.98236pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [10] [11 <./img/workflow_neighbors.pdf>]
-<./img/workflow_chunks.pdf, id=382, 794.97pt x 794.97pt>
+<./img/workflow_chunks.pdf, id=390, 794.97pt x 794.97pt>
 File: ./img/workflow_chunks.pdf Graphic file (type pdf)
 
 <use ./img/workflow_chunks.pdf>
-Package pdftex.def Info: ./img/workflow_chunks.pdf used on input line 392.
+Package pdftex.def Info: ./img/workflow_chunks.pdf used on input line 401.
 (pdftex.def)             Requested size: 317.98236pt x 317.98236pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [12] [13 <./img/workflow_chunks.pdf>]
-Overfull \hbox (10.51686pt too wide) in paragraph at lines 444--456
+Overfull \hbox (10.51686pt too wide) in paragraph at lines 454--470
 \OT1/cmr/m/n/12 dard C li-brary func-tions and struc-tures were used which are 
 con-form-ing to POSIX.1-
  []
 
 
 LaTeX Warning: Hyper reference `installation-and-use' on page 14 undefined on i
-nput line 468.
+nput line 483.
 
 [14]
 Chapter 2.
@@ -602,135 +602,138 @@ Chapter 2.
 ] [16] [17]
 
 LaTeX Warning: Hyper reference `neighborstorage' on page 18 undefined on input 
-line 673.
+line 692.
 
 [18] [19] [20] [21] [22] [23]
 Chapter 3.
+[24
 
-Overfull \hbox (19.68526pt too wide) in paragraph at lines 997--997
+]
+Overfull \hbox (19.68526pt too wide) in paragraph at lines 1028--1028
 []\OT1/cmtt/m/n/12 /afs/ms/u/h/hudecekv/futu.avi // location of the file to be 
 re-encoded[] 
  []
 
 
-Overfull \hbox (50.56027pt too wide) in paragraph at lines 997--997
+Overfull \hbox (50.56027pt too wide) in paragraph at lines 1028--1028
 []\OT1/cmtt/m/n/12 spawn u-pl1 2221 // spawn the program on the machine 'u-pl1'
 , use port 2221[] 
  []
 
 
-Overfull \hbox (13.51025pt too wide) in paragraph at lines 997--997
+Overfull \hbox (13.51025pt too wide) in paragraph at lines 1028--1028
 []\OT1/cmtt/m/n/12 kill u-pl4 // kill the instance of program running on machin
 e 'u-pl4'[] 
  []
 
-[24
-
-] <./img/improvement_root.png, id=495, 864.22874pt x 557.08125pt>
+[25] <./img/improvement_root.png, id=520, 864.22874pt x 557.08125pt>
 File: ./img/improvement_root.png Graphic file (type png)
 
 <use ./img/improvement_root.png>
-Package pdftex.def Info: ./img/improvement_root.png used on input line 1036.
+Package pdftex.def Info: ./img/improvement_root.png used on input line 1073.
 (pdftex.def)             Requested size: 388.89934pt x 250.68425pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[25] <./img/Rplot_all.png, id=501, 864.22874pt x 557.08125pt>
+<./img/Rplot_all.png, id=521, 864.22874pt x 557.08125pt>
 File: ./img/Rplot_all.png Graphic file (type png)
 
 <use ./img/Rplot_all.png>
-Package pdftex.def Info: ./img/Rplot_all.png used on input line 1056.
+Package pdftex.def Info: ./img/Rplot_all.png used on input line 1098.
 (pdftex.def)             Requested size: 388.89934pt x 250.68425pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/Rplot10k.png, id=502, 864.22874pt x 557.08125pt>
+<./img/Rplot10k.png, id=522, 864.22874pt x 557.08125pt>
 File: ./img/Rplot10k.png Graphic file (type png)
 
 <use ./img/Rplot10k.png>
-Package pdftex.def Info: ./img/Rplot10k.png used on input line 1063.
+Package pdftex.def Info: ./img/Rplot10k.png used on input line 1105.
 (pdftex.def)             Requested size: 388.89934pt x 250.68425pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/Rplot40k.png, id=503, 765.86125pt x 415.5525pt>
+<./img/Rplot40k.png, id=523, 765.86125pt x 415.5525pt>
 File: ./img/Rplot40k.png Graphic file (type png)
 
 <use ./img/Rplot40k.png>
-Package pdftex.def Info: ./img/Rplot40k.png used on input line 1070.
+Package pdftex.def Info: ./img/Rplot40k.png used on input line 1112.
 (pdftex.def)             Requested size: 344.63437pt x 186.99689pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/comparison_chart.png, id=505, 904.1278pt x 509.65407pt>
+[26 <./img/improvement_root.png (PNG copy)>]
+<./img/comparison_chart.png, id=532, 904.1278pt x 509.65407pt>
 File: ./img/comparison_chart.png Graphic file (type png)
 
 <use ./img/comparison_chart.png>
-Package pdftex.def Info: ./img/comparison_chart.png used on input line 1087.
+Package pdftex.def Info: ./img/comparison_chart.png used on input line 1129.
 (pdftex.def)             Requested size: 452.06279pt x 254.8264pt.
 
-Overfull \hbox (39.49783pt too wide) in paragraph at lines 1087--1088
+Overfull \hbox (39.49783pt too wide) in paragraph at lines 1129--1130
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/comparison_chart40k.png, id=506, 904.1278pt x 509.65407pt>
+<./img/comparison_chart40k.png, id=533, 904.1278pt x 509.65407pt>
 File: ./img/comparison_chart40k.png Graphic file (type png)
 
 <use ./img/comparison_chart40k.png>
-Package pdftex.def Info: ./img/comparison_chart40k.png used on input line 1094.
+Package pdftex.def Info: ./img/comparison_chart40k.png used on input line 1136.
 
 (pdftex.def)             Requested size: 452.06279pt x 254.8264pt.
 
-Overfull \hbox (39.49783pt too wide) in paragraph at lines 1094--1095
+Overfull \hbox (39.49783pt too wide) in paragraph at lines 1136--1137
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26 <./img/improvement_root.png (PNG copy)>]
-<./img/failures_both.png, id=514, 1340.00626pt x 625.33624pt>
+<./img/failures_both.png, id=534, 1340.00626pt x 625.33624pt>
 File: ./img/failures_both.png Graphic file (type png)
 
 <use ./img/failures_both.png>
-Package pdftex.def Info: ./img/failures_both.png used on input line 1117.
+Package pdftex.def Info: ./img/failures_both.png used on input line 1159.
 (pdftex.def)             Requested size: 402.00497pt x 187.60231pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [27 <./img/Rplot_all.png (PNG copy)>]
-<./img/model.png, id=527, 642.4pt x 401.5pt>
+<./img/model.png, id=546, 642.4pt x 401.5pt>
 File: ./img/model.png Graphic file (type png)
  <use ./img/model.png>
-Package pdftex.def Info: ./img/model.png used on input line 1154.
+Package pdftex.def Info: ./img/model.png used on input line 1198.
 (pdftex.def)             Requested size: 385.44298pt x 240.90184pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/model_plots.png, id=528, 864.22874pt x 557.08125pt>
+<./img/model_plots.png, id=547, 864.22874pt x 557.08125pt>
 File: ./img/model_plots.png Graphic file (type png)
 
 <use ./img/model_plots.png>
-Package pdftex.def Info: ./img/model_plots.png used on input line 1161.
+Package pdftex.def Info: ./img/model_plots.png used on input line 1205.
 (pdftex.def)             Requested size: 388.89934pt x 250.68425pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [28 <./img/Rplot10k.png (PNG copy)>] [29 <./img/Rplot40k.png (PNG copy)>]
-[30 <./img/comparison_chart.png (PNG copy)> <./img/comparison_chart40k.png (PNG
- copy)>] [31 <./img/failures_both.png> <./img/model.png (PNG copy)>] [32 <./img
+[30 <./img/comparison_chart.png (PNG copy)>] [31 <./img/comparison_chart40k.png
+ (PNG copy)> <./img/failures_both.png>] [32 <./img/model.png (PNG copy)> <./img
 /model_plots.png (PNG copy)>]
 Chapter 4.
+
+Overfull \hbox (0.76547pt too wide) in paragraph at lines 1289--1303
+[]\OT1/cmr/m/n/12 Another is-sue was re-lat-ed to more so-phis-ti-cat-ed way of
+ dis-tribut-ing the chunks.
+ []
+
 [33
 
 ] [34]
@@ -776,68 +779,45 @@ Overfull \hbox (35.39098pt too wide) in paragraph at lines 27--31
 
 ] [39
 
+] [40
+
 ]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[40
-
-] <./img/init-screen.pdf, id=632, 1351.0475pt x 705.63625pt>
+<./img/init-screen.pdf, id=654, 1371.1225pt x 716.6775pt>
 File: ./img/init-screen.pdf Graphic file (type pdf)
 
 <use ./img/init-screen.pdf>
-Package pdftex.def Info: ./img/init-screen.pdf used on input line 1372.
-(pdftex.def)             Requested size: 472.87372pt x 246.97638pt.
-
-Overfull \hbox (60.30876pt too wide) in paragraph at lines 1372--1374
- [] 
- []
+Package pdftex.def Info: ./img/init-screen.pdf used on input line 1421.
+(pdftex.def)             Requested size: 411.33992pt x 215.00491pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/loading.pdf, id=633, 1370.96187pt x 168.3891pt>
+<./img/loading.pdf, id=655, 1370.96187pt x 168.3891pt>
 File: ./img/loading.pdf Graphic file (type pdf)
  <use ./img/loading.pdf>
-Package pdftex.def Info: ./img/loading.pdf used on input line 1400.
-(pdftex.def)             Requested size: 479.84386pt x 58.93706pt.
-
-Overfull \hbox (67.2789pt too wide) in paragraph at lines 1400--1402
- [] 
- []
+Package pdftex.def Info: ./img/loading.pdf used on input line 1449.
+(pdftex.def)             Requested size: 411.29173pt x 50.5171pt.
 
 [41 <./img/init-screen.pdf>]
-<./img/process-initiator.pdf, id=647, 1371.1225pt x 283.0575pt>
+<./img/process-initiator.pdf, id=674, 1371.1225pt x 283.0575pt>
 File: ./img/process-initiator.pdf Graphic file (type pdf)
 
 <use ./img/process-initiator.pdf>
-Package pdftex.def Info: ./img/process-initiator.pdf used on input line 1410.
-(pdftex.def)             Requested size: 479.90007pt x 99.0716pt.
+Package pdftex.def Info: ./img/process-initiator.pdf used on input line 1459.
+(pdftex.def)             Requested size: 411.33992pt x 84.9179pt.
 
-Overfull \hbox (67.33511pt too wide) in paragraph at lines 1410--1411
- [] 
- []
-
-<./img/processing.pdf, id=648, 1371.1225pt x 288.07625pt>
+<./img/processing.pdf, id=675, 1371.1225pt x 288.07625pt>
 File: ./img/processing.pdf Graphic file (type pdf)
 
 <use ./img/processing.pdf>
-Package pdftex.def Info: ./img/processing.pdf used on input line 1416.
-(pdftex.def)             Requested size: 479.90007pt x 100.82819pt.
+Package pdftex.def Info: ./img/processing.pdf used on input line 1465.
+(pdftex.def)             Requested size: 411.33992pt x 86.42354pt.
 
-Overfull \hbox (67.33511pt too wide) in paragraph at lines 1416--1417
- [] 
- []
-
-<./img/joining.pdf, id=649, 1371.1225pt x 725.71124pt>
+<./img/joining.pdf, id=676, 1371.1225pt x 725.71124pt>
 File: ./img/joining.pdf Graphic file (type pdf)
  <use ./img/joining.pdf>
-Package pdftex.def Info: ./img/joining.pdf used on input line 1422.
-(pdftex.def)             Requested size: 479.90007pt x 254.00273pt.
-
-Overfull \hbox (67.33511pt too wide) in paragraph at lines 1422--1423
- [] 
- []
+Package pdftex.def Info: ./img/joining.pdf used on input line 1471.
+(pdftex.def)             Requested size: 411.33992pt x 217.71504pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -854,11 +834,11 @@ tiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./img/joining.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
 >]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1429.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1429.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1484.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1484.
  (./thesis.aux (./preface.aux) (./epilog.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1429.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1429.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1484.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1484.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 2EFBFBE9E4F02DF4DE5079280167C784;7363.
@@ -866,16 +846,16 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1429.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1484.
  ) 
 Here is how much of TeX's memory you used:
- 9414 strings out of 494994
- 130168 string characters out of 6180200
- 199031 words of memory out of 5000000
- 12351 multiletter control sequences out of 15000+600000
+ 9424 strings out of 494994
+ 130253 string characters out of 6180200
+ 199030 words of memory out of 5000000
+ 12348 multiletter control sequences out of 15000+600000
  10538 words of font info for 37 fonts, out of 8000000 for 9000
  24 hyphenation exceptions out of 8191
- 29i,8n,31p,1399b,386s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,8n,31p,1409b,392s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/tex
@@ -890,10 +870,10 @@ amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis.pdf (47 pages, 965844 bytes).
+Output written on thesis.pdf (47 pages, 998449 bytes).
 PDF statistics:
- 802 PDF objects out of 1000 (max. 8388607)
- 686 compressed objects within 7 object streams
- 183 named destinations out of 1000 (max. 500000)
+ 835 PDF objects out of 1000 (max. 8388607)
+ 716 compressed objects within 8 object streams
+ 196 named destinations out of 1000 (max. 500000)
  470 words of extra memory for PDF output out of 10000 (max. 10000000)
 

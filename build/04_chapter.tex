@@ -4,28 +4,28 @@ improvements}\label{problems-alternatives-and-possible-improvements}
 Some alternative approaches were also considered during the designing.
 One of them was not to use periodical checking at all. It was based on
 the idea, that there would exist permanent connection with each neighbor
-and the change of state would be indicated by the events related to this
+and the state changes would be indicated by the events related to this
 connection. However it was rejected due to the requirements connected
 with keeping the connection. Furthermore, the changes of ready state of
-the node would have to be check either periodically or the node would
+the node would have to be checked either periodically or the node would
 have to inform all its neighbors (even potential) about each change
-which would lead to another problems to deal with and is in contrast
-with passivity of the slaves anyway.
+which would lead to another problems to deal with. It is in contrast
+with passivity of the slaves too.
 
-Another issue was whether use some more sophisticated way of
-distributing the chunks. Namely some kind of hierarchy was considered
-when the chunk references would be distributed to neighbors in packs,
-where it would be further split and distributed among neighbor's
-neighbors and so on, so a kind of a tree structure would be formed. The
-transfer of the file would be processed directly between the initiator
-and the leaf node. However this approach turned out to be complicated
-and brings many problems. For example in case of failure of some node
-which is high in the hierarchy a lot of chunks would have to be
-re-distributed. Also the initiator's ability to control the distribution
-would be reduced. Moreover, the advantages of this approach are not so
-significant at all, because the biggest portion of time is spent during
-transfers and processing the chunks and the time spent with distribution
-of references is not important at all.
+Another issue was related to more sophisticated way of distributing the
+chunks. Namely some kind of hierarchy was considered in which the chunk
+references would be distributed to neighbors in packs. At the neighbor
+it would be further split and distributed among neighbor's neighbors and
+so on. A kind of a tree structure would be formed this way. The transfer
+of the file would be processed directly between the initiator and the
+leaf node. However this approach turned out to be complicated and brings
+many problems. For example in case of failure of some node which is high
+in the hierarchy a lot of chunks would have to be re-distributed. Also
+the initiator's ability to control the distribution would be reduced.
+Moreover, the advantages of this approach are not so significant at all,
+because the biggest portion of time is spent during transfers and
+processing the chunks. The time spent with distribution of references is
+not important at all.
 
 Interesting alternative would be use of the
 anycast\footnote{https://en.wikipedia.org/wiki/Anycast} mechanism
@@ -43,13 +43,13 @@ after the timeout. Also some form of redundancy could help, which on the
 other hand would certainly affect the effectiveness. If some node is
 processing more tasks sequentially while using approximately the same
 set of neighbors, the framework could also determine optimal chunk size
-to achieve good ratio of transfer and computing times (the chunk should
-not be too small because of the delays tied with its distribution) while
-minimizing the possible delay caused by waiting for re-encoding of some
-lost chunk. We could see at the end of the
-\hyperref[interpreting-the-results]{chapter 3}, that use of smaller
-chunk size leads to better performance, specifically when the failure of
-some node occurs, the difference is quite significant.
+to achieve good ratio of transfer and computing times. The chunks should
+not be too small because of the delays tied with its distribution.
+Optimal chunk size could significantly reduce the possible delay caused
+by waiting for re-encoding of some lost chunk. We could see at the end
+of the \hyperref[interpreting-the-results]{chapter 3}, that use of
+smaller chunk size leads to better performance, especially when the
+failure of some node occurs, the difference can be quite big.
 
 Also the current implementation creates a separate connection for each
 data transfer. Alternatively, each chunk could be delivered and returned
