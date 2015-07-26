@@ -1,18 +1,47 @@
-@Book{Foo,
-	author = "John Doe",
-	title = "How to Foo",
-	year = 1970,
-	isbn = "1234-5678",
-	edition = "7th",
-	publisher = "Publisher",
-	address = "Ougadougou"
-}
-@Book{SupPeer,
-	author = "Atul Saini",
+@misc{SupPeer,
+	author = {{Fiorano Software}},
 	title = "Super-peer architectures for distributed computing",
-	year = 1970,
-	isbn = "1234-5678",
-	edition = "7th",
-	publisher = "Publisher",
-	address = "Ougadougou"
-} 
+	url = {http://www.fiorano.com/whitepapers/superpeer.pdf}
+
+}
+
+@INPROCEEDINGS{DVE,
+    author = {Daniel Hughes James and James Walkerdine},
+    title = {Distributed Video Encoding Over A Peer-To-Peer Network},
+    booktitle = {In the proceedings of PREP 2005},
+    year = {2005}
+}
+
+@book{ECON,
+  author = {Gujarati, D. N. and Porter, D. C.},
+  year = {2009},
+  booktitle = {Basic Econometrics (Fifth ed.)},
+  pulisher = {Boston: McGraw-Hill Irwin},
+  isbn = {ISBN 9780073375779}
+}
+
+@misc{BOINC,
+  title = {BOINC client–server technology},
+  howpublished = {\url{https://en.wikipedia.org/wiki/BOINC\_client-server\_technology}},
+  note = {Accessed: 2015-07-05}
+}
+@INPROCEEDINGS{BitTor,
+  title = {BitTorrent},
+  url = {https://en.wikipedia.org/wiki/BitTorrent},
+  note = {Accessed: 2015-07-05}
+}
+@INPROCEEDINGS{Gnutella,
+  title = {Gnutella},
+  url = {https://en.wikipedia.org/wiki/Gnutella},
+  note = {Accessed: 2015-07-05}
+}
+@INPROCEEDINGS{MapRed,
+  title = {MapReduce},
+  url = {https://en.wikipedia.org/wiki/MapReduce},
+  note = {Accessed: 2015-07-05}
+}
+@Article{Hadoop,
+  title = {Apache Hadoop},
+  url = {https://en.wikipedia.org/wiki/Apache\_Hadoop},
+  note = {Accessed: 2015-07-05}
+}
