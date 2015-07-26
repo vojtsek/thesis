@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.5.12)  26 JUL 2015 11:32
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.5.12)  26 JUL 2015 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -623,14 +623,14 @@ Overfull \hbox (13.51025pt too wide) in paragraph at lines 1033--1033
 e 'u-pl4'[] 
  []
 
-[25] <./img/improvement_root.png, id=546, 864.22874pt x 557.08125pt>
+[25] <./img/improvement_root.png, id=547, 864.22874pt x 557.08125pt>
 File: ./img/improvement_root.png Graphic file (type png)
 
 <use ./img/improvement_root.png>
 Package pdftex.def Info: ./img/improvement_root.png used on input line 1078.
 (pdftex.def)             Requested size: 388.89934pt x 250.68425pt.
 
-<./img/Rplot_all.png, id=547, 864.22874pt x 557.08125pt>
+<./img/Rplot_all.png, id=548, 864.22874pt x 557.08125pt>
 File: ./img/Rplot_all.png Graphic file (type png)
 
 <use ./img/Rplot_all.png>
@@ -640,7 +640,7 @@ Package pdftex.def Info: ./img/Rplot_all.png used on input line 1103.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/Rplot10k.png, id=548, 864.22874pt x 557.08125pt>
+<./img/Rplot10k.png, id=549, 864.22874pt x 557.08125pt>
 File: ./img/Rplot10k.png Graphic file (type png)
 
 <use ./img/Rplot10k.png>
@@ -650,7 +650,7 @@ Package pdftex.def Info: ./img/Rplot10k.png used on input line 1110.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/Rplot40k.png, id=549, 765.86125pt x 415.5525pt>
+<./img/Rplot40k.png, id=550, 765.86125pt x 415.5525pt>
 File: ./img/Rplot40k.png Graphic file (type png)
 
 <use ./img/Rplot40k.png>
@@ -661,7 +661,7 @@ Package pdftex.def Info: ./img/Rplot40k.png used on input line 1117.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [26 <./img/improvement_root.png (PNG copy)>]
-<./img/comparison_chart.png, id=558, 904.1278pt x 509.65407pt>
+<./img/comparison_chart.png, id=559, 904.1278pt x 509.65407pt>
 File: ./img/comparison_chart.png Graphic file (type png)
 
 <use ./img/comparison_chart.png>
@@ -675,7 +675,7 @@ Overfull \hbox (39.49783pt too wide) in paragraph at lines 1134--1135
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/comparison_chart40k.png, id=559, 904.1278pt x 509.65407pt>
+<./img/comparison_chart40k.png, id=560, 904.1278pt x 509.65407pt>
 File: ./img/comparison_chart40k.png Graphic file (type png)
 
 <use ./img/comparison_chart40k.png>
@@ -690,7 +690,7 @@ Overfull \hbox (39.49783pt too wide) in paragraph at lines 1141--1142
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/failures_both.png, id=560, 1340.00626pt x 625.33624pt>
+<./img/failures_both.png, id=561, 1340.00626pt x 625.33624pt>
 File: ./img/failures_both.png Graphic file (type png)
 
 <use ./img/failures_both.png>
@@ -701,7 +701,7 @@ Package pdftex.def Info: ./img/failures_both.png used on input line 1164.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [27 <./img/Rplot_all.png (PNG copy)>]
-<./img/model.png, id=572, 642.4pt x 401.5pt>
+<./img/model.png, id=573, 642.4pt x 401.5pt>
 File: ./img/model.png Graphic file (type png)
  <use ./img/model.png>
 Package pdftex.def Info: ./img/model.png used on input line 1203.
@@ -710,7 +710,7 @@ Package pdftex.def Info: ./img/model.png used on input line 1203.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/model_plots.png, id=573, 864.22874pt x 557.08125pt>
+<./img/model_plots.png, id=574, 864.22874pt x 557.08125pt>
 File: ./img/model_plots.png Graphic file (type png)
 
 <use ./img/model_plots.png>
@@ -764,7 +764,7 @@ LaTeX Warning: Hyper reference `Problems-alternatives-and-possible-improvements
 ]
 [40
 
-] <./img/init-screen.pdf, id=689, 1371.1225pt x 716.6775pt>
+] <./img/init-screen.pdf, id=690, 1371.1225pt x 716.6775pt>
 File: ./img/init-screen.pdf Graphic file (type pdf)
 
 <use ./img/init-screen.pdf>
@@ -774,28 +774,28 @@ Package pdftex.def Info: ./img/init-screen.pdf used on input line 1426.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./img/loading.png, id=690, 1370.2392pt x 167.6664pt>
+<./img/loading.png, id=691, 1370.2392pt x 167.6664pt>
 File: ./img/loading.png Graphic file (type png)
  <use ./img/loading.png>
 Package pdftex.def Info: ./img/loading.png used on input line 1454.
 (pdftex.def)             Requested size: 411.07494pt x 50.3003pt.
 
 [41 <./img/init-screen.pdf>]
-<./img/process-initiator.pdf, id=710, 1371.1225pt x 283.0575pt>
+<./img/process-initiator.pdf, id=711, 1371.1225pt x 283.0575pt>
 File: ./img/process-initiator.pdf Graphic file (type pdf)
 
 <use ./img/process-initiator.pdf>
 Package pdftex.def Info: ./img/process-initiator.pdf used on input line 1463.
 (pdftex.def)             Requested size: 411.33992pt x 84.9179pt.
 
-<./img/processing.pdf, id=711, 1371.1225pt x 288.07625pt>
+<./img/processing.pdf, id=712, 1371.1225pt x 288.07625pt>
 File: ./img/processing.pdf Graphic file (type pdf)
 
 <use ./img/processing.pdf>
 Package pdftex.def Info: ./img/processing.pdf used on input line 1469.
 (pdftex.def)             Requested size: 411.33992pt x 86.42354pt.
 
-<./img/joining.pdf, id=712, 1371.1225pt x 725.71124pt>
+<./img/joining.pdf, id=713, 1371.1225pt x 725.71124pt>
 File: ./img/joining.pdf Graphic file (type pdf)
  <use ./img/joining.pdf>
 Package pdftex.def Info: ./img/joining.pdf used on input line 1475.
@@ -828,8 +828,8 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1488.
  ) 
 Here is how much of TeX's memory you used:
- 9482 strings out of 494994
- 130886 string characters out of 6180200
+ 9483 strings out of 494994
+ 130898 string characters out of 6180200
  199983 words of memory out of 5000000
  12407 multiletter control sequences out of 15000+600000
  10405 words of font info for 37 fonts, out of 8000000 for 9000
@@ -849,10 +849,10 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis.pdf (47 pages, 992632 bytes).
+Output written on thesis.pdf (47 pages, 992588 bytes).
 PDF statistics:
- 854 PDF objects out of 1000 (max. 8388607)
- 742 compressed objects within 8 object streams
- 193 named destinations out of 1000 (max. 500000)
+ 855 PDF objects out of 1000 (max. 8388607)
+ 743 compressed objects within 8 object streams
+ 194 named destinations out of 1000 (max. 500000)
  470 words of extra memory for PDF output out of 10000 (max. 10000000)
 
