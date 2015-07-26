@@ -87,13 +87,14 @@ server's performance too.
 \subsection{Peer to peer
 architectures}\label{peer-to-peer-architectures}
 
-\citep{SupPeer} \subsection*{Pure peer to peer network} Peer to peer
-paradigm is virtually the opposite of the previous model. Nodes are
-completely equivalent to each other. Any of them can join the network at
-any time, as well as leave it. This approach means great scalability and
-fault tolerance. On the other hand, it requires more complex design and
-can encounter problems with security and management of the network. Our
-framework implements this model.
+\subsection*{Pure peer to peer network}
+
+Peer to peer paradigm is virtually the opposite of the previous model.
+Nodes are completely equivalent to each other. Any of them can join the
+network at any time, as well as leave it. This approach means great
+scalability and fault tolerance. On the other hand, it requires more
+complex design and can encounter problems with security and management
+of the network. Our framework implements this model.
 
 \subsection*{Hybrid peer to peer network}
 
@@ -113,7 +114,8 @@ performance than other nodes, that plays the role of the control server,
 but only for a restricted group of nodes. Autonomous groups (clusters)
 are thus formed. It has the same advantages as the hybrid network but
 the potential super peer failure is not so crucial. Also each super peer
-can have backup so the robustness of the network can be very good.
+can have backup so the robustness of the network can be very
+good.\citep{SupPeer}
 
 \subsection{Summary}\label{summary}
 
@@ -140,7 +142,7 @@ D. Hughes and J. Walkerdine from the Lancaster university published in
 their paper a solution which is using Lancaster's P2P Application
 Framework. They implemented a Java plug-in for this framework which uses
 Microsoft Windows Media Encoder
-SDK\footnote{https://en.wikipedia.org/wiki/Windows\_Media\_Encoder}.
+SDK\footnote{\url{https://en.wikipedia.org/wiki/Windows\_Media\_Encoder}}.
 Their approach was quite similar to ours and they achieved quite
 persuasive results. However their solution was usable in the specific
 environment only.\citep{DVE}
@@ -152,7 +154,7 @@ It serves for processing large amount of data and also as a storage. It
 provides very good ability to deal with hardware failures. The framework
 consists of the HDFS (Hadoop Distributed File System) and the processing
 part. The HDFS is a distributed file system which uses
-TCP/IP\footnote{https://en.wikipedia.org/wiki/Internet\_protocol\_suite}
+TCP/IP\footnote{\url{https://en.wikipedia.org/wiki/Internet\_protocol\_suite}}
 sockets for communication between nodes. It uses replication of data to
 achieve reliability. It is optimized to store large immutable files
 (range of gigabytes or even terabytes). The framework could use
@@ -193,7 +195,7 @@ given task. After the computation, the results are verified and
 uploaded. The system is used mainly for scientific computations. For
 example it is used by the well known project SETI@home. The framework is
 based on the client-server architecture. The server runs on UNIX
-OS\footnote{https://en.wikipedia.org/wiki/Unix}, using common
+OS\footnote{\url{https://en.wikipedia.org/wiki/Unix}}, using common
 technologies such as the Apache web server and the MySQL database
 server. A PHP language is used.There are also CGI programs and daemons
 running on the server. The obvious difference is in use of the
@@ -252,7 +254,7 @@ chunks back, it joins them together and the process ends.
 
 C++ language has been chosen for the implementation. It allows us to use
 standard POSIX socket
-\footnote{https://en.wikipedia.org/wiki/Berkeley\_sockets} API
+\footnote{\url{https://en.wikipedia.org/wiki/Berkeley\_sockets}} API
 (Application Programming Interface) which is widely used and has been
 proven by thousands of applications. Also it provides convenient
 functionality thanks to its Standard Template Library while allowing to
@@ -264,9 +266,9 @@ background and computes nothing, it does not spend many system
 resources. The program is supporting Linux operating system, it has been
 tested on several Linux distributions. Nevertheless, it conforms to the
 POSIX standard
-\footnote{https://en.wikipedia.org/wiki/POSIX\#POSIX.1-2001}, so after
-some modifications it could be used with any UNIX or UNIX-like operating
-system.
+\footnote{\url{https://en.wikipedia.org/wiki/POSIX\#POSIX.1-2001}}, so
+after some modifications it could be used with any UNIX or UNIX-like
+operating system.
 
 \subsection{Neighbor maintaining}\label{neighbor-maintaining}
 
@@ -455,24 +457,24 @@ joining process.
 The network communication is the most important part of the framework.
 Standard C library functions and structures were used which are
 conforming to
-POSIX.1-2001\footnote{https://en.wikipedia.org/wiki/POSIX\#POSIX.1-2001}
+POSIX.1-2001\footnote{\url{https://en.wikipedia.org/wiki/POSIX\#POSIX.1-2001}}
 standard. Although the program is intended to be used on the
-UNIX\footnote{https://en.wikipedia.org/wiki/Unix} or UNIX-like operating
-systems, it should be portable to the Microsoft Windows systems as well
-thanks to the use of this standard. To preserve simplicity, all the
-network communication makes use of the TCP (Transmission Control
-Protocol)
-\footnote{https://en.wikipedia.org/wiki/Transmission\_Control\_Protocol}.
+UNIX\footnote{\url{https://en.wikipedia.org/wiki/Unix}} or UNIX-like
+operating systems, it should be portable to the Microsoft Windows
+systems as well thanks to the use of this standard. To preserve
+simplicity, all the network communication makes use of the TCP
+(Transmission Control Protocol)
+\footnote{\url{https://en.wikipedia.org/wiki/Transmission\_Control\_Protocol}}.
 The system primarily uses the IPv6
-\footnote{https://en.wikipedia.org/wiki/Internet\_Protocol} addresses,
-but it can be run in the mode which uses addresses of the IPv4 family
-only. Additional and more detailed information can be found in
-\hyperref[implementation]{chapter 2}.
+\textbackslash{}footnote\{\url{https://en.wikipedia.org/wiki/Internet\_Protocol}
+addresses, but it can be run in the mode which uses addresses of the
+IPv4 family only. Additional and more detailed information can be found
+in \hyperref[implementation]{chapter 2}.
 
 \subsection{User interface}\label{user-interface}
 
 To provide interaction with the user, the
-curses\footnote{https://en.wikipedia.org/wiki/Curses\_(programming\_library)}
+curses\footnote{\url{https://en.wikipedia.org/wiki/Curses\_(programming\_library)}}
 library is used. This library makes it possible to control the terminal
 screen. That means, the application does not require any special GUI
 (Graphical User Interface) libraries and is able to run interactively
@@ -489,18 +491,19 @@ the implementation, namely the synchronization problems are discussed in
 This chapter describes some of the used mechanisms in more detail. It
 also introduces some classes and methods, but it is not supposed to
 serve as a detailed and full documentation. The
-Doxygen\footnote{https://en.wikipedia.org/wiki/Doxygen} software has
-been used to generate documentation so the complete overview of the code
-can be found in the attached
-HTML\footnote{https://en.wikipedia.org/wiki/HTML} documents. The program
-is implemented in the C++ language. This allows us to use the standard C
-library functions. Also the functionality provided by the C++
-STL\footnote{https://en.wikipedia.org/wiki/Standard\_Template\_Library}
+Doxygen\footnote{\url{https://en.wikipedia.org/wiki/Doxygen}} software
+has been used to generate documentation so the complete overview of the
+code can be found in the attached
+HTML\footnote{\url{https://en.wikipedia.org/wiki/HTML}} documents. The
+program is implemented in the C++ language. This allows us to use the
+standard C library functions. Also the functionality provided by the C++
+STL\textbackslash{}footnote\{\url{https://en.wikipedia.org/wiki/Standard\_Template\_Library}
 is exploited. Some of its containers are used as a base for containers
 with synchronized access implemented in the framework. Some of the
-functionality from the C++11\footnote{https://en.wikipedia.org/wiki/C++}
-standard is also used, so the use of the program is limited to computers
-with compiler supporting this standard.
+functionality from the
+C++11\footnote{\url{https://en.wikipedia.org/wiki/C++}} standard is also
+used, so the use of the program is limited to computers with compiler
+supporting this standard.
 
 \section{Networking}\label{networking}
 
@@ -654,8 +657,8 @@ communication, the corresponding execute method indicates it by its
 return value, so it can be propagated further. The signal handler also
 has to be set to cover situations when the connection is destroyed
 unexpectedly and the
-SIGPIPE\footnote{https://en.wikipedia.org/wiki/Unix\_signal} is
-delivered.
+SIGPIPE\textbackslash{}footnote\{\url{https://en.wikipedia.org/wiki/Unix\_signal}
+is delivered.
 
 \section{Structures' overview}\label{structures-overview}
 
@@ -790,9 +793,9 @@ video. Especially for splitting, encoding and joining it.
 The video processing is secured by the \textit{TaskHandler class}. When
 it is loaded, some useful piece of information is obtained thanks to the
 \textit{ffprobe} program. To allow easy processing, the output is in the
-JSON\footnote{https://en.wikipedia.org/wiki/JSON} format which is then
-parsed with the help of the
-\textit{rapidjson}\footnote{https://github.com/miloyip/rapidjson}
+JSON\footnote{\url{https://en.wikipedia.org/wiki/JSON}} format which is
+then parsed with the help of the
+\textit{rapidjson}\footnote{\url{https://github.com/miloyip/rapidjson}}
 library. This library consists of header files only and is distributed
 as a part of the source code. It is available under the MIT license
 which makes it suitable for our usage. Parsed values can be showed using
@@ -982,12 +985,12 @@ like to measure the impact of the particular setting on the result.
 The tests were run in the school laboratory. The network consists of
 several computers connected together with common ethernet twisted pair
 cables. Each computer has currently installed 64 bit Gentoo
-Linux\footnote{https://www.gentoo.org/} with the Linux kernel version
-3.18. The machines are equipped with Intel Core i7 processors and 6 GB
-of operation memory. The
-MTU\footnote{https://en.wikipedia.org/wiki/Maximum\_Transmission\_Unit}
+Linux\footnote{\url{https://www.gentoo.org/}} with the Linux kernel
+version 3.18. The machines are equipped with Intel Core i7 processors
+and 6 GB of operation memory. The
+MTU\footnote{\url{https://en.wikipedia.org/wiki/Maximum\_Transmission\_Unit}}
 is set to 1500B and the network uses Gigabit
-Ethernet\footnote{https://en.wikipedia.org/wiki/Ethernet}.
+Ethernet\footnote{\url{https://en.wikipedia.org/wiki/Ethernet}}.
 
 Because of the number of tests, it is desirable for the testing process
 to be automated. Special Bash script was created for this reason. The
@@ -1002,10 +1005,11 @@ This options assumes all the essential data are given at the start time
 of the program. To keep the measurements independent, all the instances
 (on every node) of the program are started when the test begins and they
 are killed in the end. Communication with the remote nodes is handled by
-the ssh program\footnote{https://en.wikipedia.org/wiki/Secure\_Shell}.
-The testing script uses a special file which describes the particular
-run. Working example of such file together with explanations of the
-values is given below.
+the ssh
+program\footnote{\url{https://en.wikipedia.org/wiki/Secure\_Shell}}. The
+testing script uses a special file which describes the particular run.
+Working example of such file together with explanations of the values is
+given below.
 
 \begin{samepage}
 \begin{verbatim}
@@ -1123,7 +1127,7 @@ data for chunks with 10 MB in size, the second shows 40 MB chunks. The
 data are sorted according to the number of neighbors used in the
 process. We can see that portion of time spent with network transfers is
 relatively small in our case. These charts were generated using the
-LibreOffice package\footnote{http://www.libreoffice.org/}
+LibreOffice package\footnote{\url{http://www.libreoffice.org/}}
 
 \begin{figure}[h]
 \begin{center}
@@ -1167,9 +1171,9 @@ the split and join operations take slightly more time.
 \subsection{Linear Model}\label{linear-model}
 
 Work with the data and the model was performed in the R Studio
-program\footnote{https://www.rstudio.com/}. To evaluate the data, simple
-linear regression model was used. Specifically, subsequent formula was
-used:
+program\footnote{\url{https://www.rstudio.com/}}. To evaluate the data,
+simple linear regression model was used. Specifically, subsequent
+formula was used:
 
 \begin{center}
 $\frac{single\_node\_time}{distributed\_time} = \beta_0 + \beta_1 \times neighbor\_count + \beta_2 \times neighbor\_count^2 + \epsilon_i$
@@ -1216,8 +1220,8 @@ searching appropriate neighbors, but it will not be taken into account
 in this analysis. Also, based on the data we can observe, that the time
 taken by the split operation is not very significant, therefore we can
 omit it. If we ask how big speedup can be achieved, we can use the
-Amdahl's law\footnote{https://en.wikipedia.org/wiki/Amdahl's\_law} to
-model the situation. The join operation can not be parallelized. The
+Amdahl's law\footnote{\url{https://en.wikipedia.org/wiki/Amdahl's\_law}}
+to model the situation. The join operation can not be parallelized. The
 encoding itself is parallelized completely. The data transfer operations
 are performed theoretically in parallel, however, in practice we are
 limited by the network throughput and the system resources of the
@@ -1303,7 +1307,7 @@ processing the chunks. The time spent with distribution of references is
 not important at all.
 
 Interesting alternative would be use of the
-anycast\footnote{https://en.wikipedia.org/wiki/Anycast} mechanism
+anycast\footnote{\url{https://en.wikipedia.org/wiki/Anycast}} mechanism
 provided by the IPv6 protocol. The nodes would be addressed with an
 anycast address and each chunk would be simply sent to this address.
 Obvious disadvantage of this approach is the loss of the control of the

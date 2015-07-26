@@ -3,18 +3,19 @@
 This chapter describes some of the used mechanisms in more detail. It
 also introduces some classes and methods, but it is not supposed to
 serve as a detailed and full documentation. The
-Doxygen\footnote{https://en.wikipedia.org/wiki/Doxygen} software has
-been used to generate documentation so the complete overview of the code
-can be found in the attached
-HTML\footnote{https://en.wikipedia.org/wiki/HTML} documents. The program
-is implemented in the C++ language. This allows us to use the standard C
-library functions. Also the functionality provided by the C++
-STL\footnote{https://en.wikipedia.org/wiki/Standard\_Template\_Library}
+Doxygen\footnote{\url{https://en.wikipedia.org/wiki/Doxygen}} software
+has been used to generate documentation so the complete overview of the
+code can be found in the attached
+HTML\footnote{\url{https://en.wikipedia.org/wiki/HTML}} documents. The
+program is implemented in the C++ language. This allows us to use the
+standard C library functions. Also the functionality provided by the C++
+STL\textbackslash{}footnote\{\url{https://en.wikipedia.org/wiki/Standard\_Template\_Library}
 is exploited. Some of its containers are used as a base for containers
 with synchronized access implemented in the framework. Some of the
-functionality from the C++11\footnote{https://en.wikipedia.org/wiki/C++}
-standard is also used, so the use of the program is limited to computers
-with compiler supporting this standard.
+functionality from the
+C++11\footnote{\url{https://en.wikipedia.org/wiki/C++}} standard is also
+used, so the use of the program is limited to computers with compiler
+supporting this standard.
 
 \section{Networking}\label{networking}
 
@@ -168,8 +169,8 @@ communication, the corresponding execute method indicates it by its
 return value, so it can be propagated further. The signal handler also
 has to be set to cover situations when the connection is destroyed
 unexpectedly and the
-SIGPIPE\footnote{https://en.wikipedia.org/wiki/Unix\_signal} is
-delivered.
+SIGPIPE\textbackslash{}footnote\{\url{https://en.wikipedia.org/wiki/Unix\_signal}
+is delivered.
 
 \section{Structures' overview}\label{structures-overview}
 
@@ -304,9 +305,9 @@ video. Especially for splitting, encoding and joining it.
 The video processing is secured by the \textit{TaskHandler class}. When
 it is loaded, some useful piece of information is obtained thanks to the
 \textit{ffprobe} program. To allow easy processing, the output is in the
-JSON\footnote{https://en.wikipedia.org/wiki/JSON} format which is then
-parsed with the help of the
-\textit{rapidjson}\footnote{https://github.com/miloyip/rapidjson}
+JSON\footnote{\url{https://en.wikipedia.org/wiki/JSON}} format which is
+then parsed with the help of the
+\textit{rapidjson}\footnote{\url{https://github.com/miloyip/rapidjson}}
 library. This library consists of header files only and is distributed
 as a part of the source code. It is available under the MIT license
 which makes it suitable for our usage. Parsed values can be showed using

@@ -26,13 +26,14 @@ server's performance too.
 \subsection{Peer to peer
 architectures}\label{peer-to-peer-architectures}
 
-\citep{SupPeer} \subsection*{Pure peer to peer network} Peer to peer
-paradigm is virtually the opposite of the previous model. Nodes are
-completely equivalent to each other. Any of them can join the network at
-any time, as well as leave it. This approach means great scalability and
-fault tolerance. On the other hand, it requires more complex design and
-can encounter problems with security and management of the network. Our
-framework implements this model.
+\subsection*{Pure peer to peer network}
+
+Peer to peer paradigm is virtually the opposite of the previous model.
+Nodes are completely equivalent to each other. Any of them can join the
+network at any time, as well as leave it. This approach means great
+scalability and fault tolerance. On the other hand, it requires more
+complex design and can encounter problems with security and management
+of the network. Our framework implements this model.
 
 \subsection*{Hybrid peer to peer network}
 
@@ -52,7 +53,8 @@ performance than other nodes, that plays the role of the control server,
 but only for a restricted group of nodes. Autonomous groups (clusters)
 are thus formed. It has the same advantages as the hybrid network but
 the potential super peer failure is not so crucial. Also each super peer
-can have backup so the robustness of the network can be very good.
+can have backup so the robustness of the network can be very
+good.\citep{SupPeer}
 
 \subsection{Summary}\label{summary}
 
@@ -79,7 +81,7 @@ D. Hughes and J. Walkerdine from the Lancaster university published in
 their paper a solution which is using Lancaster's P2P Application
 Framework. They implemented a Java plug-in for this framework which uses
 Microsoft Windows Media Encoder
-SDK\footnote{https://en.wikipedia.org/wiki/Windows\_Media\_Encoder}.
+SDK\footnote{\url{https://en.wikipedia.org/wiki/Windows\_Media\_Encoder}}.
 Their approach was quite similar to ours and they achieved quite
 persuasive results. However their solution was usable in the specific
 environment only.\citep{DVE}
@@ -91,7 +93,7 @@ It serves for processing large amount of data and also as a storage. It
 provides very good ability to deal with hardware failures. The framework
 consists of the HDFS (Hadoop Distributed File System) and the processing
 part. The HDFS is a distributed file system which uses
-TCP/IP\footnote{https://en.wikipedia.org/wiki/Internet\_protocol\_suite}
+TCP/IP\footnote{\url{https://en.wikipedia.org/wiki/Internet\_protocol\_suite}}
 sockets for communication between nodes. It uses replication of data to
 achieve reliability. It is optimized to store large immutable files
 (range of gigabytes or even terabytes). The framework could use
@@ -132,7 +134,7 @@ given task. After the computation, the results are verified and
 uploaded. The system is used mainly for scientific computations. For
 example it is used by the well known project SETI@home. The framework is
 based on the client-server architecture. The server runs on UNIX
-OS\footnote{https://en.wikipedia.org/wiki/Unix}, using common
+OS\footnote{\url{https://en.wikipedia.org/wiki/Unix}}, using common
 technologies such as the Apache web server and the MySQL database
 server. A PHP language is used.There are also CGI programs and daemons
 running on the server. The obvious difference is in use of the
@@ -191,7 +193,7 @@ chunks back, it joins them together and the process ends.
 
 C++ language has been chosen for the implementation. It allows us to use
 standard POSIX socket
-\footnote{https://en.wikipedia.org/wiki/Berkeley\_sockets} API
+\footnote{\url{https://en.wikipedia.org/wiki/Berkeley\_sockets}} API
 (Application Programming Interface) which is widely used and has been
 proven by thousands of applications. Also it provides convenient
 functionality thanks to its Standard Template Library while allowing to
@@ -203,9 +205,9 @@ background and computes nothing, it does not spend many system
 resources. The program is supporting Linux operating system, it has been
 tested on several Linux distributions. Nevertheless, it conforms to the
 POSIX standard
-\footnote{https://en.wikipedia.org/wiki/POSIX\#POSIX.1-2001}, so after
-some modifications it could be used with any UNIX or UNIX-like operating
-system.
+\footnote{\url{https://en.wikipedia.org/wiki/POSIX\#POSIX.1-2001}}, so
+after some modifications it could be used with any UNIX or UNIX-like
+operating system.
 
 \subsection{Neighbor maintaining}\label{neighbor-maintaining}
 
@@ -394,24 +396,24 @@ joining process.
 The network communication is the most important part of the framework.
 Standard C library functions and structures were used which are
 conforming to
-POSIX.1-2001\footnote{https://en.wikipedia.org/wiki/POSIX\#POSIX.1-2001}
+POSIX.1-2001\footnote{\url{https://en.wikipedia.org/wiki/POSIX\#POSIX.1-2001}}
 standard. Although the program is intended to be used on the
-UNIX\footnote{https://en.wikipedia.org/wiki/Unix} or UNIX-like operating
-systems, it should be portable to the Microsoft Windows systems as well
-thanks to the use of this standard. To preserve simplicity, all the
-network communication makes use of the TCP (Transmission Control
-Protocol)
-\footnote{https://en.wikipedia.org/wiki/Transmission\_Control\_Protocol}.
+UNIX\footnote{\url{https://en.wikipedia.org/wiki/Unix}} or UNIX-like
+operating systems, it should be portable to the Microsoft Windows
+systems as well thanks to the use of this standard. To preserve
+simplicity, all the network communication makes use of the TCP
+(Transmission Control Protocol)
+\footnote{\url{https://en.wikipedia.org/wiki/Transmission\_Control\_Protocol}}.
 The system primarily uses the IPv6
-\footnote{https://en.wikipedia.org/wiki/Internet\_Protocol} addresses,
-but it can be run in the mode which uses addresses of the IPv4 family
-only. Additional and more detailed information can be found in
-\hyperref[implementation]{chapter 2}.
+\textbackslash{}footnote\{\url{https://en.wikipedia.org/wiki/Internet\_Protocol}
+addresses, but it can be run in the mode which uses addresses of the
+IPv4 family only. Additional and more detailed information can be found
+in \hyperref[implementation]{chapter 2}.
 
 \subsection{User interface}\label{user-interface}
 
 To provide interaction with the user, the
-curses\footnote{https://en.wikipedia.org/wiki/Curses\_(programming\_library)}
+curses\footnote{\url{https://en.wikipedia.org/wiki/Curses\_(programming\_library)}}
 library is used. This library makes it possible to control the terminal
 screen. That means, the application does not require any special GUI
 (Graphical User Interface) libraries and is able to run interactively

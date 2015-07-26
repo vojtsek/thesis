@@ -30,12 +30,12 @@ like to measure the impact of the particular setting on the result.
 The tests were run in the school laboratory. The network consists of
 several computers connected together with common ethernet twisted pair
 cables. Each computer has currently installed 64 bit Gentoo
-Linux\footnote{https://www.gentoo.org/} with the Linux kernel version
-3.18. The machines are equipped with Intel Core i7 processors and 6 GB
-of operation memory. The
-MTU\footnote{https://en.wikipedia.org/wiki/Maximum\_Transmission\_Unit}
+Linux\footnote{\url{https://www.gentoo.org/}} with the Linux kernel
+version 3.18. The machines are equipped with Intel Core i7 processors
+and 6 GB of operation memory. The
+MTU\footnote{\url{https://en.wikipedia.org/wiki/Maximum\_Transmission\_Unit}}
 is set to 1500B and the network uses Gigabit
-Ethernet\footnote{https://en.wikipedia.org/wiki/Ethernet}.
+Ethernet\footnote{\url{https://en.wikipedia.org/wiki/Ethernet}}.
 
 Because of the number of tests, it is desirable for the testing process
 to be automated. Special Bash script was created for this reason. The
@@ -50,10 +50,11 @@ This options assumes all the essential data are given at the start time
 of the program. To keep the measurements independent, all the instances
 (on every node) of the program are started when the test begins and they
 are killed in the end. Communication with the remote nodes is handled by
-the ssh program\footnote{https://en.wikipedia.org/wiki/Secure\_Shell}.
-The testing script uses a special file which describes the particular
-run. Working example of such file together with explanations of the
-values is given below.
+the ssh
+program\footnote{\url{https://en.wikipedia.org/wiki/Secure\_Shell}}. The
+testing script uses a special file which describes the particular run.
+Working example of such file together with explanations of the values is
+given below.
 
 \begin{samepage}
 \begin{verbatim}
@@ -171,7 +172,7 @@ data for chunks with 10 MB in size, the second shows 40 MB chunks. The
 data are sorted according to the number of neighbors used in the
 process. We can see that portion of time spent with network transfers is
 relatively small in our case. These charts were generated using the
-LibreOffice package\footnote{http://www.libreoffice.org/}
+LibreOffice package\footnote{\url{http://www.libreoffice.org/}}
 
 \begin{figure}[h]
 \begin{center}
@@ -215,9 +216,9 @@ the split and join operations take slightly more time.
 \subsection{Linear Model}\label{linear-model}
 
 Work with the data and the model was performed in the R Studio
-program\footnote{https://www.rstudio.com/}. To evaluate the data, simple
-linear regression model was used. Specifically, subsequent formula was
-used:
+program\footnote{\url{https://www.rstudio.com/}}. To evaluate the data,
+simple linear regression model was used. Specifically, subsequent
+formula was used:
 
 \begin{center}
 $\frac{single\_node\_time}{distributed\_time} = \beta_0 + \beta_1 \times neighbor\_count + \beta_2 \times neighbor\_count^2 + \epsilon_i$
@@ -264,8 +265,8 @@ searching appropriate neighbors, but it will not be taken into account
 in this analysis. Also, based on the data we can observe, that the time
 taken by the split operation is not very significant, therefore we can
 omit it. If we ask how big speedup can be achieved, we can use the
-Amdahl's law\footnote{https://en.wikipedia.org/wiki/Amdahl's\_law} to
-model the situation. The join operation can not be parallelized. The
+Amdahl's law\footnote{\url{https://en.wikipedia.org/wiki/Amdahl's\_law}}
+to model the situation. The join operation can not be parallelized. The
 encoding itself is parallelized completely. The data transfer operations
 are performed theoretically in parallel, however, in practice we are
 limited by the network throughput and the system resources of the
